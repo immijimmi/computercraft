@@ -1,6 +1,8 @@
 def excavate(move_sequence, offset_existing=()):
     """
     If any refuel fails the turtle will have been repositioned back at the starting point
+    at the top of the stack, so when the refuel function returns False this should be propagated
+    and handled by any callers of this method accordingly
     """
 
     offset_additional = []
