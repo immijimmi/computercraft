@@ -1,4 +1,6 @@
-from .constants import Constants
+from .constants import Constants, Mock
+
+turtle = Mock.Turtle()
 
 
 def clean_inventory():

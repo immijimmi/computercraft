@@ -1,3 +1,9 @@
+from .clean_inventory import clean_inventory
+from .constants import Mock
+
+turtle = Mock.Turtle()
+
+
 def move(move_str):
     def apply_turns(reverse=False):
         if not reverse:
@@ -34,15 +40,15 @@ def move(move_str):
         dig_command = turtle.dig
 
     for i in range(100):  # and i would try 100 times and i would try 100 more
-            if move_command():
-                return
+        if move_command():
+            return
 
-            if i == 99:
-                apply_turns(reverse=True)
-                return False
+        if i == 99:
+            apply_turns(reverse=True)
+            return False
 
-            if clean_inventory() is False:
-                apply_turns(reverse=True)
-                return False
+        if clean_inventory() is False:
+            apply_turns(reverse=True)
+            return False
 
-            dig_command()
+        dig_command()
