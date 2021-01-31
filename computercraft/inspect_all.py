@@ -1,9 +1,11 @@
+from typing import Dict, Any
+
 from .constants import Mock
 
 turtle = Mock.Turtle()
 
 
-def inspect_all():
+def inspect_all() -> Dict[str, Any]:
     result = {}
 
     result["front"] = turtle.inspect()
