@@ -57,3 +57,5 @@ class Constants:
         "minecraft:blackstone",
         "minecraft:soul_sand"
     }
+
+    empty_slots_required = 2
