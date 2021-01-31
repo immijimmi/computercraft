@@ -27,7 +27,7 @@ class Mock:
         def digDown(self):
             pass
 
-        def select(self, index: int):
+        def select(self, index):
             pass
 
         def getItemDetail(self):
@@ -37,6 +37,9 @@ class Mock:
             pass
 
         def getSelectedSlot(self):
+            pass
+
+        def getFuelLimit(self):
             pass
 
 
@@ -59,3 +62,12 @@ class Constants:
     }
 
     empty_slots_required = 2
+
+    reversed_moves = {
+        "left": "right",
+        "right": "left",
+        "up": "down",
+        "down": "up",
+        "forward": "forward",
+        "back": "back"
+    }
