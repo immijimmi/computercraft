@@ -1,3 +1,5 @@
+from typing import Callable, Tuple
+
 from .try_clean_inventory import try_clean_inventory
 from .constants import Mock
 
@@ -29,7 +31,7 @@ def try_move(move: str, reverse_order: bool = False) -> bool:
                 turtle.turnLeft()
                 turtle.turnLeft()
 
-    def get_commands():
+    def get_commands() -> Tuple[Callable, Callable]:
         if move == "up":
             return turtle.up, turtle.digUp
         elif move == "down":

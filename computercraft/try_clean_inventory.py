@@ -3,7 +3,7 @@ from .constants import Constants, Mock
 turtle = Mock.Turtle()
 
 
-def try_clean_inventory():
+def try_clean_inventory() -> bool:
     """
     If the inventory does not have enough empty slots after cleaning,
     this function should return False
