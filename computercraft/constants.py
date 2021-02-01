@@ -1,58 +1,32 @@
+def empty(self):
+    pass
+
+
+def empty_2(self, arg):
+    pass
+
+
 class Mock:
     class Turtle:
-        def up(self):
-            pass
+        up = empty
+        down = empty
+        forward = empty
+        back = empty
+        turnLeft = empty
+        turnRight = empty
+        dig = empty
+        digUp = empty
+        digDown = empty
+        getItemDetail = empty
+        drop = empty
+        getSelectedSlot = empty
+        getFuelLimit = empty
+        getFuelLevel = empty
+        inspect = empty
+        inspectUp = empty
+        inspectDown = empty
 
-        def down(self):
-            pass
-
-        def forward(self):
-            pass
-
-        def back(self):
-            pass
-
-        def turnLeft(self):
-            pass
-
-        def turnRight(self):
-            pass
-
-        def dig(self):
-            pass
-
-        def digUp(self):
-            pass
-
-        def digDown(self):
-            pass
-
-        def select(self, index):
-            pass
-
-        def getItemDetail(self):
-            pass
-
-        def drop(self):
-            pass
-
-        def getSelectedSlot(self):
-            pass
-
-        def getFuelLimit(self):
-            pass
-
-        def getFuelLevel(self):
-            pass
-
-        def inspect(self):
-            pass
-
-        def inspectUp(self):
-            pass
-
-        def inspectDown(self):
-            pass
+        select = empty_2
 
 
 class Constants:
