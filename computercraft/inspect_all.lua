@@ -1,17 +1,23 @@
 function inspect_all()
     local result = {}
 
-    result["front"] = turtle.inspect() or nil
-    result["up"] = turtle.inspectUp() or nil
-    result["down"] = turtle.inspectDown() or nil
+    local success, value = turtle.inspectUp()
+    if success then
+        result["up"] = value
+    end
 
-    turtle.turnLeft()
-    result["left"] = turtle.inspect() or nil
-    turtle.turnLeft()
-    result["back"] = turtle.inspect() or nil
-    turtle.turnLeft()
-    result["right"] = turtle.inspect() or nil
-    turtle.turnLeft()
+    local success, value = turtle.inspectDown()
+    if success then
+        result["down"] = value
+    end
+
+    for _, direction in ipairs({[1]="front", [2]="left", [3]="back", [4]="right"}) do
+        local success, value = turtle.inspect()
+        if success then
+            result[direction] = value
+        end
+        turtle.turnLeft()
+    end
 
     return result
 end
