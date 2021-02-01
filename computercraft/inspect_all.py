@@ -8,7 +8,7 @@ turtle = Mock.Turtle()
 def inspect_all() -> Dict[str, Any]:
     result = {}
 
-    result["front"] = turtle.inspect()
+    result["forward"] = turtle.inspect()
     result["up"] = turtle.inspectUp()
     result["down"] = turtle.inspectDown()
 
