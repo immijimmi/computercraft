@@ -18,7 +18,7 @@ function execute_reversed_moves(moves)
     turtle.turnRight()
     turtle.turnRight()
 
-    execute_moves(reversed_moves)
+    execute_moves(reversed_moves, true)
 
     turtle.turnRight()
     turtle.turnRight()
