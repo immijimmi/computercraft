@@ -1,16 +1,16 @@
 function inspect_all()
     local result = {}
 
-    result["front"] = turtle.inspect()
-    result["up"] = turtle.inspectUp()
-    result["down"] = turtle.inspectDown()
+    result["front"] = turtle.inspect() or nil
+    result["up"] = turtle.inspectUp() or nil
+    result["down"] = turtle.inspectDown() or nil
 
     turtle.turnLeft()
-    result["left"] = turtle.inspect()
+    result["left"] = turtle.inspect() or nil
     turtle.turnLeft()
-    result["back"] = turtle.inspect()
+    result["back"] = turtle.inspect() or nil
     turtle.turnLeft()
-    result["right"] = turtle.inspect()
+    result["right"] = turtle.inspect() or nil
     turtle.turnLeft()
 
     return result
