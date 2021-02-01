@@ -1,4 +1,4 @@
-from typing import Iterable, Sequence
+from typing import Sequence
 
 from .try_move import try_move
 from .execute_moves import execute_moves
@@ -10,11 +10,11 @@ from .constants import Constants, Mock
 turtle = Mock.Turtle()
 
 
-def excavate(moves: Iterable[str], prior_offset: Sequence[str] = ()) -> bool:
+def excavate(moves: Sequence[str], prior_offset: Sequence[str] = ()) -> bool:
     offset = []
     offset_limit = int(turtle.getFuelLimit()/2)
 
-    for move in moves:
+    for move_index, move in enumerate(moves):
         if len(prior_offset)+len(offset) >= offset_limit:  # If offset limit is reached
             break
 
@@ -30,6 +30,9 @@ def excavate(moves: Iterable[str], prior_offset: Sequence[str] = ()) -> bool:
             break
 
         surrounding_blocks = inspect_all()
+        if len(moves) > move_index + 1:
+            surrounding_blocks[moves[move_index+1]] = None  # If a move is already next, it does not need excavating
+
         for key in surrounding_blocks:
             block = surrounding_blocks[key]
             if block and block["name"] in Constants.valuables:
