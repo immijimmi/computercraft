@@ -6,14 +6,14 @@ from .constants import Mock
 turtle = Mock.Turtle()
 
 
-def try_move(move: str, reverse_order: bool = False) -> bool:
+def try_move(move: str, is_reverse_order: bool = False) -> bool:
     """
     reverse_order only affects whether turns are executed before movement. Any reversal of direction
     should be carried out externally with the resulting direction being used in this function
     """
 
-    def apply_turns(reverse: bool = False) -> None:
-        if not reverse:
+    def apply_turns(is_reverse: bool = False) -> None:
+        if not is_reverse:
             if move == "left":
                 turtle.turnLeft()
             elif move == "right":
@@ -55,12 +55,12 @@ def try_move(move: str, reverse_order: bool = False) -> bool:
 
     move_command, dig_command = get_commands()
 
-    if not reverse_order:
+    if not is_reverse_order:
         apply_turns()
         if try_move_command():
             return True
         else:
-            apply_turns(reverse=True)
+            apply_turns(is_reverse=True)
             return False
 
     else:
