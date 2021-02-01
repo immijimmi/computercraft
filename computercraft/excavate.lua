@@ -33,6 +33,7 @@ function excavate(moves, prior_offset)
         if not try_move(move) then
             break
         end
+        offset[#offset+1] = move
 
         local surrounding_blocks = inspect_all()
 
