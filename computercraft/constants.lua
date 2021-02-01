@@ -1,12 +1,12 @@
 local constants = {
     non_valuables = {  -- Used to filter items out of the inventory
         -- Overworld
-        -- ["minecraft:sand"]=true,
+        -- ["minecraft:sand"] = true,
         ["minecraft:gravel"] = true,
         ["minecraft:granite"] = true,
         ["minecraft:diorite"] = true,
         ["minecraft:andesite"] = true,
-        ["minecraft:dirt"] =true,
+        ["minecraft:dirt"] = true,
         ["minecraft:cobblestone"] = true,
 
         -- Nether
