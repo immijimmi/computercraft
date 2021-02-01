@@ -14,7 +14,7 @@ local constants = {
         ["minecraft:magma_block"] = true,
         ["minecraft:blackstone"] = true,
         ["minecraft:soul_sand"] = true
-    }
+    },
 
     valuables = {  -- Used to pick blocks to mine
         -- Overworld
@@ -32,9 +32,9 @@ local constants = {
         ["minecraft:nether_gold_ore"] = true,
         ["minecraft:glowstone"] = true,
         ["minecraft:nether_quartz_ore"] = true
-    }
+    },
 
-    empty_slots_required = 2
+    empty_slots_required = 2,
 
     reversed_moves = {
         left = "right",
