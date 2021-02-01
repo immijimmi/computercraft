@@ -1,5 +1,5 @@
-local execute_moves = require("execute_moves.lua")
-local constants = require("constants.lua")
+local execute_moves = require("execute_moves")
+local constants = require("constants")
 
 
 function execute_reversed_moves(moves)

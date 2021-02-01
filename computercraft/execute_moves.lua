@@ -1,4 +1,4 @@
-local try_move = require("try_move.lua")
+local try_move = require("try_move")
 
 
 function execute_moves(moves)

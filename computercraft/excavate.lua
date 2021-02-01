@@ -1,10 +1,10 @@
-local try_move = require("try_move.lua")
-local execute_moves = require("execute_moves.lua")
-local execute_reversed_moves = require("execute_reversed_moves.lua")
-local try_refuel = require("try_refuel.lua")
-local inspect_all = require("inspect_all.lua")
-local constants = require("constants.lua")
-local concat_lists = require("concat_lists.lua")
+local try_move = require("try_move")
+local execute_moves = require("execute_moves")
+local execute_reversed_moves = require("execute_reversed_moves")
+local try_refuel = require("try_refuel")
+local inspect_all = require("inspect_all")
+local constants = require("constants")
+local concat_lists = require("concat_lists")
 
 
 function excavate(moves, prior_offset)

@@ -1,4 +1,4 @@
-local constants = require("constants.lua")
+local constants = require("constants")
 
 
 function try_clean_inventory()
