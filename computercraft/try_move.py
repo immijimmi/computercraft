@@ -46,7 +46,7 @@ def try_move(move: str, is_reverse_order: bool = False) -> bool:
             if attempt == 99:
                 return False
 
-            if try_clean_inventory() is False:
+            if not try_clean_inventory():
                 return False
             dig_command()
 

@@ -46,7 +46,7 @@ function try_move(move, is_reverse_order)
                 return true
             elseif attempt == 100 then
                 return false
-            elseif try_clean_inventory() == false then
+            elseif not try_clean_inventory() then
                 return false
             end
 

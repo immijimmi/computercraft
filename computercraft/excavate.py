@@ -22,7 +22,7 @@ def excavate(moves: Iterable[str], prior_offset: Sequence[str] = ()) -> bool:
             full_offset = list(prior_offset)+offset
 
             execute_reversed_moves(full_offset)
-            if try_refuel(len(full_offset)) is False:
+            if not try_refuel(len(full_offset)):
                 return False
             execute_moves(full_offset)
 
