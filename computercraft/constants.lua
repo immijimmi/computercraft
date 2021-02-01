@@ -46,6 +46,4 @@ constants = {
     }
 }
 
-return {
-    constants = constants
-}
+return constants
