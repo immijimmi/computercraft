@@ -1,4 +1,4 @@
-constants = {
+local constants = {
     non_valuables = {  -- Used to filter items out of the inventory
         -- Overworld
         -- ["minecraft:sand"]=true,
