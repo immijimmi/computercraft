@@ -35,7 +35,11 @@ function excavate(moves, prior_offset)
         end
 
         local surrounding_blocks = inspect_all()
-        surrounding_blocks[moves[move_index+1]] = nil  -- If a move is already next, it does not need excavating
+
+        local next_move = moves[move_index+1]
+        if next_move then
+            surrounding_blocks[next_move] = nil  -- If a move is already next, it does not need excavating
+        end
 
         for key, block in pairs(surrounding_blocks) do
             if constants.valuables[block["name"]] then
