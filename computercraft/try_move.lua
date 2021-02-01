@@ -7,6 +7,11 @@ function try_move(move, is_reverse_order)
     should be carried out externally with the resulting direction being used in this function
     --]]
 
+    local valid_moves = {up=true, down=true, left=true, right=true, forward=true, back=true}
+    if valid_moves[move] == nil then
+        error(move)
+    end
+
     function apply_turns(is_reverse)
         if not is_reverse then
             if move == "left" then
@@ -40,6 +45,11 @@ function try_move(move, is_reverse_order)
         end
     end
 
+    -- Hoisted this logic so that locals are available in try_move_command
+    local commands = get_commands()
+    local move_command = commands[1]
+    local dig_command = commands[2]
+
     function try_move_command()
         for attempt=1,100 do
             if move_command() then
@@ -53,15 +63,6 @@ function try_move(move, is_reverse_order)
             dig_command()
         end
     end
-
-    local valid_moves = {up=true, down=true, left=true, right=true, forward=true, back=true}
-    if valid_moves[move] == nil then
-        error(move)
-    end
-
-    local commands = get_commands()
-    local move_command = commands[1]
-    local dig_command = commands[2]
 
     if not is_reverse_order then
         apply_turns()
