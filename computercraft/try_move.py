@@ -8,7 +8,7 @@ turtle = Mock.Turtle()
 
 def try_move(move: str, is_reverse_order: bool = False) -> bool:
     """
-    reverse_order only affects whether turns are executed before movement. Any reversal of direction
+    Reverse order only affects whether turns are executed before movement. Any reversal of direction
     should be carried out externally with the resulting direction being used in this function
     """
 
