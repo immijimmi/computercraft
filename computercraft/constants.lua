@@ -1,35 +1,3 @@
-function empty()
-end
-
-
-function empty_2(arg)
-end
-
-
-mock = {
-    turtle = {
-        up = empty,
-        down = empty,
-        forward = empty,
-        back = empty,
-        turnLeft = empty,
-        turnRight = empty,
-        dig = empty,
-        digUp = empty,
-        digDown = empty,
-        getItemDetail = empty,
-        drop = empty,
-        getSelectedSlot = empty,
-        getFuelLimit = empty,
-        getFuelLevel = empty,
-        inspect = empty,
-        inspectUp = empty,
-        inspectDown = empty,
-
-        select = empty_2
-    }
-}
-
 constants = {
     non_valuables = {  -- Used to filter items out of the inventory
         -- Overworld
@@ -79,6 +47,5 @@ constants = {
 }
 
 return {
-    constants = constants,
-    mock = mock
+    constants = constants
 }
