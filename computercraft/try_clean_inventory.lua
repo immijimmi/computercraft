@@ -24,7 +24,7 @@ function try_clean_inventory()
             turtle.select(slot_index)
             local item_detail = turtle.getItemDetail()
 
-            if item_detail != nil and constants.non_valuables[item_detail["name"]] then
+            if item_detail ~= nil and constants.non_valuables[item_detail["name"]] then
                 turtle.drop()
                 empty_slots = empty_slots + 1
 
