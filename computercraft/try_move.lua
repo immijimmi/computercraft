@@ -60,7 +60,13 @@ function try_move(move, is_reverse_order)
                 return false
             end
 
-            dig_command()
+            local inspect_success, block = turtle.inspect()
+
+            if inspect_success and string.find(block["name"], "computercraft:") == 1 then
+                os.sleep(constants.move_attempt_wait_time)
+            else
+                dig_command()
+            end
         end
     end
 

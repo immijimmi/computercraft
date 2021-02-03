@@ -36,6 +36,8 @@ local constants = {
 
     empty_slots_required = 2,
 
+    move_attempt_wait_time = 0.5,
+
     reversed_moves = {
         left = "right",
         right = "left",
