@@ -7,7 +7,7 @@ local constants = require("constants")
 local concat_lists = require("concat_lists")
 
 
-function excavate(moves, prior_offset)
+function excavate(moves, prior_offset, backtrack=true)
     if prior_offset == nil then
         prior_offset = {}
     end
@@ -54,7 +54,10 @@ function excavate(moves, prior_offset)
         end
     end
 
-    execute_reversed_moves(offset)  -- Backtrack only this particular call's offset
+    if backtrack then
+        execute_reversed_moves(offset)  -- Backtrack only this particular call's offset
+    end
+
     return true
 end
 
