@@ -2,7 +2,7 @@ local excavate = require("excavate")
 local constants = require("constants")
 
 
-function strip_mine(curr_depth, resource, distance=100)
+function strip_mine(curr_depth, resource, distance)
     local y_distance = constants.resource_depths[resource] - curr_depth
 
     local moves = {}
@@ -83,7 +83,7 @@ function strip_mine(curr_depth, resource, distance=100)
         end
     end
 
-    excavate(moves, backtrack=false)
+    excavate(moves, nil, false)
     if forward then
         turtle.turnLeft()
         turtle.turnLeft()
