@@ -89,3 +89,6 @@ function strip_mine(curr_depth, resource, distance)
         turtle.turnLeft()
     end
 end
+
+
+return strip_mine
