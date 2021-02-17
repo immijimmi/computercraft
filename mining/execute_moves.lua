@@ -1,4 +1,4 @@
-local try_move = require("try_move")
+local try_move = require("mining.try_move")
 
 
 function execute_moves(moves, is_reverse_order)

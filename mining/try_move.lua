@@ -1,4 +1,4 @@
-local try_clean_inventory = require("try_clean_inventory")
+local try_clean_inventory = require("mining.try_clean_inventory")
 
 
 function try_move(move, is_reverse_order)

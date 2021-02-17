@@ -1,5 +1,5 @@
-local execute_moves = require("execute_moves")
-local constants = require("constants")
+local execute_moves = require("mining.execute_moves")
+local constants = require("mining.constants")
 
 
 function execute_reversed_moves(moves)

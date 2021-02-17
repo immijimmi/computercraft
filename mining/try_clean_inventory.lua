@@ -1,4 +1,4 @@
-local constants = require("constants")
+local constants = require("mining.constants")
 
 
 function try_clean_inventory()

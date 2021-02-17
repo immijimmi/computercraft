@@ -1,5 +1,5 @@
-local excavate = require("excavate")
-local constants = require("constants")
+local excavate = require("mining.excavate")
+local constants = require("mining.constants")
 
 
 function strip_mine(curr_depth, resource, distance)

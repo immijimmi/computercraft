@@ -1,10 +1,10 @@
-local try_move = require("try_move")
-local execute_moves = require("execute_moves")
-local execute_reversed_moves = require("execute_reversed_moves")
-local try_refuel = require("try_refuel")
-local inspect_all = require("inspect_all")
-local constants = require("constants")
-local concat_lists = require("concat_lists")
+local try_move = require("mining.try_move")
+local execute_moves = require("mining.execute_moves")
+local execute_reversed_moves = require("mining.execute_reversed_moves")
+local try_refuel = require("mining.try_refuel")
+local inspect_all = require("mining.inspect_all")
+local constants = require("mining.constants")
+local concat_lists = require("mining.concat_lists")
 
 
 function excavate(moves, prior_offset, do_backtrack)
