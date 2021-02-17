@@ -60,25 +60,25 @@ function strip_mine(curr_depth, resource, distance)
 
     -- Backtrack along the forward axis
     if (offset_counts["forward"] >= 0) == forward then
-        for i,offset_counts["forward"] do
+        for i=1,offset_counts["forward"] do
             moves[#moves+1] = "forward"
         end
     else
         moves[#moves+1] = "back"
         forward = not forward  -- Still keeping track of direction faced
 
-        for i,math.abs(offset_counts["forward"])-1 do
+        for i=1,math.abs(offset_counts["forward"])-1 do
             moves[#moves+1] = "forward"
         end
     end
 
     -- Backtrack along the up axis
     if offset_counts["up"] >= 0 then
-        for i,offset_counts["up"] do
+        for i=1,offset_counts["up"] do
             moves[#moves+1] = "down"
         end
     else
-        for i,math.abs(offset_counts["up"]) do
+        for i=1,math.abs(offset_counts["up"]) do
             moves[#moves+1] = "up"
         end
     end
