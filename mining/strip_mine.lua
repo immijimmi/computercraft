@@ -3,8 +3,6 @@ local constants = require("constants")
 
 
 function strip_mine(curr_depth, resource, distance)
-    local y_distance = constants.resource_depths[resource] - curr_depth
-
     local moves = {}
     local offset_counts = {["forward"]=0, ["up"]=0}
 
