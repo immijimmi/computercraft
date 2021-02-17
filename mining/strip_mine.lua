@@ -81,7 +81,10 @@ function strip_mine(curr_depth, resource, distance)
         end
     end
 
-    excavate(moves, nil, false)
+    if excavate(moves, nil, false) == false then
+        return false
+    end
+
     if forward then
         turtle.turnLeft()
         turtle.turnLeft()
