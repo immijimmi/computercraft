@@ -48,8 +48,8 @@ local constants = {
     },
 
     resource_depths = {  -- Values should be the approximate centre of the most common y values for the resource
-        diamond = 9,
-        ancient_debris = 15,
+        diamond = {[1]=5, [2]=12},
+        ancient_debris = {[1]=13, [2]=17},
     }
 }
 
