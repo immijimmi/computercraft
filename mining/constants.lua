@@ -2,7 +2,7 @@ local constants = {
     non_valuables = {  -- Used to filter items out of the inventory
         -- Overworld
         -- ["minecraft:sand"] = true,
-        ["minecraft:gravel"] = true,
+        -- ["minecraft:gravel"] = true,
         ["minecraft:granite"] = true,
         ["minecraft:diorite"] = true,
         ["minecraft:andesite"] = true,
@@ -11,9 +11,9 @@ local constants = {
 
         -- Nether
         ["minecraft:netherrack"] = true,
-        ["minecraft:magma_block"] = true,
+        -- ["minecraft:magma_block"] = true,
         ["minecraft:blackstone"] = true,
-        ["minecraft:soul_sand"] = true
+        -- ["minecraft:soul_sand"] = true
     },
 
     valuables = {  -- Used to pick blocks to mine
@@ -32,6 +32,9 @@ local constants = {
         ["minecraft:nether_gold_ore"] = true,
         ["minecraft:glowstone"] = true,
         ["minecraft:nether_quartz_ore"] = true
+
+        -- Applied Energistics 2 (WIP)
+        ["appliedenergistics2:sky_stone_block"]
     },
 
     empty_slots_required = 2,
