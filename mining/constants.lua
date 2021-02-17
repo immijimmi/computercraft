@@ -31,10 +31,10 @@ local constants = {
         ["minecraft:ancient_debris"] = true,
         ["minecraft:nether_gold_ore"] = true,
         ["minecraft:glowstone"] = true,
-        ["minecraft:nether_quartz_ore"] = true
+        ["minecraft:nether_quartz_ore"] = true,
 
         -- Applied Energistics 2 (WIP)
-        ["appliedenergistics2:sky_stone_block"]
+        ["appliedenergistics2:sky_stone_block"] = true
     },
 
     empty_slots_required = 2,
