@@ -81,7 +81,7 @@ function try_strip_mine(curr_depth, resource, distance)
         end
     end
 
-    if try_excavate(moves, nil, false) == false then
+    if not try_excavate(moves, nil, false) then
         return false
     end
 

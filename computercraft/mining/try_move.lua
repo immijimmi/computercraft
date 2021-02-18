@@ -8,6 +8,11 @@ function try_move(move, is_reverse_order)
     should be carried out externally with the resulting direction being used in this function
     --]]
 
+    -- Default values
+    if is_reverse_order == nil then
+        is_reverse_order = false
+    end
+
     if constants.moves_lookup[move] == nil then
         error(move)
     end

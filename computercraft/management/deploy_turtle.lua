@@ -6,6 +6,7 @@ local fuel_required = require("mining.fuel_required")
 
 
 function deploy_turtle(prior_moves)
+    -- Default values
     if prior_moves == nil then
         prior_moves = {}
     end

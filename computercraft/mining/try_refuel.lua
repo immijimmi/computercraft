@@ -1,11 +1,16 @@
 function try_refuel(fuel_required, is_offset)
+    -- Default values
+    if is_offset == nil then
+        is_offset = true
+    end
+
     -- TODO: Add logic for refueling
 
     --[[
     Below calc assumes that you want to return to where you were before backtracking to refuel,
     and be able to make at least 1 more move before needing to backtrack once again
     --]]
-    if not is_offset == false then
+    if is_offset then
         fuel_required = (fuel_required * 2) + 2
     end
 

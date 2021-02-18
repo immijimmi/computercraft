@@ -9,8 +9,12 @@ local fuel_required = require("mining.fuel_required")
 
 
 function try_excavate(moves, prior_moves, do_backtrack)
+    -- Default values
     if prior_moves == nil then
         prior_moves = {}
+    end
+    if do_backtrack == nil then
+        do_backtrack = true
     end
 
     local result = true
@@ -49,8 +53,8 @@ function try_excavate(moves, prior_moves, do_backtrack)
 
         for key, block in pairs(surrounding_blocks) do
             if constants.valuables[block["name"]] then
-                local excavate_result = try_excavate({[1]=key}, full_moves, true)
-                if excavate_result == false then
+                local excavate_result = try_excavate({[1]=key}, full_moves)
+                if not excavate_result then
                     result = false
                     return result
                 end
@@ -58,7 +62,8 @@ function try_excavate(moves, prior_moves, do_backtrack)
         end
     end
 
-    if do_backtrack or not result then  -- Either backtrack is enabled or the turtle could not complete the move list
+    -- If either backtracking is enabled or the turtle could not complete the move list
+    if do_backtrack or not result then
         execute_reversed_moves(executed_moves)  -- Backtrack only this particular call's moves
     end
 
