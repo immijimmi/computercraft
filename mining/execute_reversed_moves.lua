@@ -4,7 +4,7 @@ local constants = require("mining.constants")
 
 function execute_reversed_moves(moves)
     --[[
-    This function turns the turtle 180 degrees before and after exevuting the reversed move sequence,
+    This function turns the turtle 180 degrees before and after executing the reversed move sequence,
     and therefore does not reverse forward and back moves. This approach is in the interest of time efficiency
     --]]
 
