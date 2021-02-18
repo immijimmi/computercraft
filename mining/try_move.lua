@@ -39,7 +39,7 @@ function try_move(move, is_reverse_order)
             return {[1] = turtle.up, [2] = turtle.digUp}
         elseif move == "down" then
             return {[1] = turtle.down, [2] = turtle.digDown}
-        elseif move == "turnLeft" or move == "turnRight"
+        elseif move == "turnLeft" or move == "turnRight" then
             return {[1] = constants.empty_function, [2] = constants.empty_function}
         else
             return {[1] = turtle.forward, [2] = turtle.dig}
