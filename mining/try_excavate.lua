@@ -21,7 +21,7 @@ function try_excavate(moves, prior_moves, do_backtrack)
     for move_index, move in ipairs(moves) do
         local fuel_spent = fuel_required(full_moves)
 
-        -- Check that there is more than enough fuel to return to the starting position
+        -- Check that will be more than enough fuel to return to the starting position, after the next move
         if fuel_spent >= turtle.getFuelLevel()-1 then
             execute_reversed_moves(full_moves)
             if not try_refuel(fuel_spent) then
