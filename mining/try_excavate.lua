@@ -5,39 +5,45 @@ local try_refuel = require("mining.try_refuel")
 local inspect_all = require("mining.inspect_all")
 local constants = require("mining.constants")
 local concat_lists = require("mining.concat_lists")
+local fuel_required = require("mining.fuel_required")
 
 
-function try_excavate(moves, prior_offset, do_backtrack)
-    if prior_offset == nil then
-        prior_offset = {}
+function try_excavate(moves, prior_moves, do_backtrack)
+    if prior_moves == nil then
+        prior_moves = {}
     end
 
     local result = true
 
-    local offset = {}
+    local executed_moves = {}
+    local full_moves = concat_lists(prior_moves, executed_moves)
     local offset_limit = math.floor(turtle.getFuelLimit()/2)
 
     for move_index, move in ipairs(moves) do
-        if #prior_offset + #offset >= offset_limit then  -- If offset limit is reached
+        local fuel_spent = fuel_required(full_moves)
+
+        if fuel_spent >= offset_limit then  -- Offset limit reached
             break
         end
 
-        if #prior_offset + #offset >= turtle.getFuelLevel()-1 then  -- If fuel limit is reached
-            local full_offset = concat_lists(prior_offset, offset)
-
-            execute_reversed_moves(full_offset)
-            if not try_refuel(#full_offset) then
+        -- Check that there is more than enough fuel to return to the starting position
+        if fuel_spent >= turtle.getFuelLevel()-1 then
+            execute_reversed_moves(full_moves)
+            if not try_refuel(fuel_spent) then
                 result = false
                 return result
             end
-            execute_moves(full_offset)
+            execute_moves(full_moves)
         end
 
         if not try_move(move) then
             result = false
             break
         end
-        offset[#offset+1] = move
+
+        executed_moves[#executed_moves+1] = move
+        full_moves[#full_moves+1] = move
+        fuel_spent = fuel_required(full_moves)
 
         local surrounding_blocks = inspect_all()
 
@@ -48,9 +54,7 @@ function try_excavate(moves, prior_offset, do_backtrack)
 
         for key, block in pairs(surrounding_blocks) do
             if constants.valuables[block["name"]] then
-                local full_offset = concat_lists(prior_offset, offset)
-
-                local excavate_result = try_excavate({[1]=key}, full_offset, true)
+                local excavate_result = try_excavate({[1]=key}, full_moves, true)
                 if excavate_result == false then
                     result = false
                     return result
@@ -60,7 +64,7 @@ function try_excavate(moves, prior_offset, do_backtrack)
     end
 
     if do_backtrack or not result then  -- Either backtrack is enabled or the turtle could not complete the move list
-        execute_reversed_moves(offset)  -- Backtrack only this particular call's offset
+        execute_reversed_moves(executed_moves)  -- Backtrack only this particular call's moves
     end
 
     return result
