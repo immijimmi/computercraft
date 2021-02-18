@@ -41,19 +41,23 @@ local constants = {
 
     move_attempt_wait_time = 0.5,
 
-    reversed_moves = {
+    moves_lookup = {  -- Doubles as both a set and a lookup for reversed moves
         left = "right",
         right = "left",
         up = "down",
         down = "up",
         forward = "forward",
-        back = "back"
+        back = "back",
+        turnLeft = "turnRight",
+        turnRight = "turnLeft"
     },
 
     resource_depths = {  -- Values should be the approximate centre of the most common y values for the resource
         diamond = {[1]=5, [2]=12},
         ancient_debris = {[1]=13, [2]=17},
-    }
+    },
+
+    empty_function = function() return true end
 }
 
 return constants

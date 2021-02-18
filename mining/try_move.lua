@@ -7,16 +7,15 @@ function try_move(move, is_reverse_order)
     should be carried out externally with the resulting direction being used in this function
     --]]
 
-    local valid_moves = {up=true, down=true, left=true, right=true, forward=true, back=true}
-    if valid_moves[move] == nil then
+    if constants.moves_lookup[move] == nil then
         error(move)
     end
 
     function apply_turns(is_reverse)
         if not is_reverse then
-            if move == "left" then
+            if move == "left" or move == "turnLeft" then
                 turtle.turnLeft()
-            elseif move == "right" then
+            elseif move == "right" or move == "turnRight" then
                 turtle.turnRight()
             elseif move == "back" then
                 turtle.turnRight()
@@ -24,9 +23,9 @@ function try_move(move, is_reverse_order)
             end
 
         else
-            if move == "left" then
+            if move == "left" or move == "turnLeft" then
                 turtle.turnRight()
-            elseif move == "right" then
+            elseif move == "right" or move == "turnRight" then
                 turtle.turnLeft()
             elseif move == "back" then
                 turtle.turnLeft()
@@ -40,6 +39,8 @@ function try_move(move, is_reverse_order)
             return {[1] = turtle.up, [2] = turtle.digUp}
         elseif move == "down" then
             return {[1] = turtle.down, [2] = turtle.digDown}
+        elseif move == "turnLeft" or move == "turnRight"
+            return {[1] = constants.empty_function, [2] = constants.empty_function}
         else
             return {[1] = turtle.forward, [2] = turtle.dig}
         end
