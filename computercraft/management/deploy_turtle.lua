@@ -63,6 +63,8 @@ function deploy_turtle(prior_moves)
     turtle.turnLeft()
 
     peripheral.call("front", "reboot")
+
+    turtle.select(current_slot_index)
 end
 
 
