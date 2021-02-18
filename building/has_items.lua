@@ -24,4 +24,5 @@ function has_items(item_amounts)
     return true
 end
 
+
 return has_items
