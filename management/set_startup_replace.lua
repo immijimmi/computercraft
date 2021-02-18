@@ -3,14 +3,14 @@ local find_item = require("building.find_item")
 
 
 function set_startup_replace(file_contents)
-    if not try_excavate({[1]="forward"}) then
-        error("unable to clear space to place the disk drive")
-    end
-
     local current_slot_index = turtle.getSelectedSlot()
 
     turtle.select(find_item("computercraft:disk_drive"))
-    turtle.place()
+    if not turtle.place() then
+        turtle.select(current_slot_index)
+        error("unable to place the disk drive")
+    end
+
     turtle.select(find_item("computercraft:disk")
     turtle.drop()
 
