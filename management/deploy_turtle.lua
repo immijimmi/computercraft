@@ -1,11 +1,11 @@
 local try_excavate = require("mining.try_excavate")
 
 
-function deploy_turtle()
-    if not try_excavate({[1]="forward"}) then
+function deploy_turtle(prior_offset)
+    if not try_excavate({[1]="forward"}, prior_offset) then
         error("unable to clear space to place the turtle")
     end
-    if not try_excavate({[1]="left", [2]="right"}) then
+    if not try_excavate({[1]="left", [2]="right"}, prior_offset) then
         error("unable to clear space to place the disk drive")
     end
 
