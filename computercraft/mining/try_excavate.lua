@@ -43,7 +43,7 @@ function try_excavate(moves, prior_moves, do_backtrack)
         executed_moves[#executed_moves+1] = move
         full_moves[#full_moves+1] = move
 
-        if constants.non_fuel_moves[move] == nil  -- If the executed move required fuel
+        if constants.non_fuel_moves[move] == nil then  -- If the executed move required fuel
             fuel_spent = fuel_spent+1
 
             -- Inspecting the new surroundings for valuable ores
