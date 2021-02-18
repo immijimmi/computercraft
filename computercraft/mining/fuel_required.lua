@@ -8,6 +8,7 @@ function fuel_required(moves)
     for move in ipairs(moves) do
         if constants.moves_lookup[move] and not non_fuel_moves[move] then
             result = result+1
+        end
     end
 
     return result
