@@ -6,17 +6,20 @@ local fuel_required = require("mining.fuel_required")
 local find_item = require("building.find_item")
 
 
-function deploy_turtle(prior_moves)
+function deploy_turtle(prior_moves, do_check_space)
     -- Default values
     if prior_moves == nil then
         prior_moves = {}
     end
-
-    if not try_excavate({[1]="forward"}, prior_moves) then
-        error("unable to clear space to place the turtle")
+    if do_check_space == nil then
+        do_check_space = true
     end
-    if not try_excavate({[1]="left", [2]="right"}, prior_moves) then
-        error("unable to clear space to place the disk drive")
+
+    if do_check_space then
+        local check_moves = {[1]="forward", [2]="left", [3]="left", [4]="left", [5]="turnLeft"}
+        if not try_excavate(check_moves, prior_moves, false) then
+            error("unable to clear the required space")
+        end
     end
 
     local fuel_spent = fuel_required(prior_moves)
