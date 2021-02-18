@@ -40,7 +40,7 @@ function deploy_turtle(prior_moves)
 
     turtle.select(find_item("computercraft:disk_drive"))
     turtle.place()
-    turtle.select(find_item("computercraft:disk")
+    turtle.select(find_item("computercraft:disk"))
     turtle.drop()
 
     turtle.turnRight()
