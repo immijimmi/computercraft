@@ -12,6 +12,8 @@ function excavate(moves, prior_offset, do_backtrack)
         prior_offset = {}
     end
 
+    local result = true
+
     local offset = {}
     local offset_limit = math.floor(turtle.getFuelLimit()/2)
 
@@ -25,12 +27,14 @@ function excavate(moves, prior_offset, do_backtrack)
 
             execute_reversed_moves(full_offset)
             if not try_refuel(#full_offset) then
-                return false
+                result = false
+                return result
             end
             execute_moves(full_offset)
         end
 
         if not try_move(move) then
+            result = false
             break
         end
         offset[#offset+1] = move
@@ -48,7 +52,8 @@ function excavate(moves, prior_offset, do_backtrack)
 
                 local excavate_result = excavate({[1]=key}, full_offset, true)
                 if excavate_result == false then
-                    return false
+                    result = false
+                    return result
                 end
             end
         end
@@ -58,7 +63,7 @@ function excavate(moves, prior_offset, do_backtrack)
         execute_reversed_moves(offset)  -- Backtrack only this particular call's offset
     end
 
-    return true
+    return result
 end
 
 
