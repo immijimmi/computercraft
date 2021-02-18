@@ -1,11 +1,15 @@
-function try_refuel(offset_amount)
+function try_refuel(fuel_required, is_offset)
     -- TODO: Add logic for refueling
 
     --[[
     Below calc assumes that you want to return to where you were before backtracking to refuel,
     and be able to make at least 1 more move before needing to backtrack once again
     --]]
-    if turtle.getFuelLevel() < (offset_amount * 2) + 2 then
+    if not is_offset == false then
+        fuel_required = (fuel_required * 2) + 2
+    end
+
+    if turtle.getFuelLevel() < fuel_required then
         return False
     else
         return True
