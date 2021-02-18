@@ -1,7 +1,14 @@
 local try_excavate = require("mining.try_excavate")
+local execute_moves = require("mining.execute_moves")
+local execute_reversed_moves = require("mining.execute_reversed_moves")
+local try_refuel = require("mining.try_refuel")
 
 
 function deploy_turtle(prior_offset)
+    if prior_offset == nil then
+        prior_offset = {}
+    end
+
     if not try_excavate({[1]="forward"}, prior_offset) then
         error("unable to clear space to place the turtle")
     end
@@ -9,9 +16,13 @@ function deploy_turtle(prior_offset)
         error("unable to clear space to place the disk drive")
     end
 
-    local remaining_fuel_required = 2  -- ##### WIP
-    if turtle.getFuelLevel() < remaining_fuel_required then
-        error("insufficient fuel remaining")
+    local remaining_fuel_required = #prior_offset + 4
+    if turtle.getFuelLevel() < remaining_fuel_required then  -- If fuel limit is reached
+        execute_reversed_moves(prior_offset)
+        if not try_refuel(remaining_fuel_required) then
+            error("insufficient fuel")
+        end
+        execute_moves(prior_offset)
     end
 
     local current_slot_index = turtle.getSelectedSlot()
