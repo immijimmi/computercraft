@@ -7,7 +7,7 @@ local constants = require("mining.constants")
 local concat_lists = require("mining.concat_lists")
 
 
-function excavate(moves, prior_offset, do_backtrack)
+function try_excavate(moves, prior_offset, do_backtrack)
     if prior_offset == nil then
         prior_offset = {}
     end
@@ -50,7 +50,7 @@ function excavate(moves, prior_offset, do_backtrack)
             if constants.valuables[block["name"]] then
                 local full_offset = concat_lists(prior_offset, offset)
 
-                local excavate_result = excavate({[1]=key}, full_offset, true)
+                local excavate_result = try_excavate({[1]=key}, full_offset, true)
                 if excavate_result == false then
                     result = false
                     return result
@@ -59,7 +59,7 @@ function excavate(moves, prior_offset, do_backtrack)
         end
     end
 
-    if do_backtrack then
+    if do_backtrack or not result then  -- Either backtrack is enabled or the turtle could not complete the move list
         execute_reversed_moves(offset)  -- Backtrack only this particular call's offset
     end
 
@@ -67,4 +67,4 @@ function excavate(moves, prior_offset, do_backtrack)
 end
 
 
-return excavate
+return try_excavate

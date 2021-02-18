@@ -1,8 +1,8 @@
-local excavate = require("mining.excavate")
+local try_excavate = require("mining.try_excavate")
 local constants = require("mining.constants")
 
 
-function strip_mine(curr_depth, resource, distance)
+function try_strip_mine(curr_depth, resource, distance)
     local moves = {}
     local offset_counts = {["forward"]=0, ["up"]=0}
 
@@ -81,7 +81,7 @@ function strip_mine(curr_depth, resource, distance)
         end
     end
 
-    if excavate(moves, nil, false) == false then
+    if try_excavate(moves, nil, false) == false then
         return false
     end
 
@@ -92,4 +92,4 @@ function strip_mine(curr_depth, resource, distance)
 end
 
 
-return strip_mine
+return try_strip_mine
