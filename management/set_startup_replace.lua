@@ -1,9 +1,11 @@
-local excavate = require("mining.excavate")
+local try_excavate = require("mining.try_excavate")
 local find_item = require("building.find_item")
 
 
 function set_startup_replace(file_contents)
-    excavate({[1]="forward"})
+    if not try_excavate({[1]="forward"}) then
+        error("unable to clear space to place the disk drive")
+    end
 
     local current_slot_index = turtle.getSelectedSlot()
 
