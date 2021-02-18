@@ -17,14 +17,9 @@ function try_excavate(moves, prior_moves, do_backtrack)
 
     local executed_moves = {}
     local full_moves = concat_lists(prior_moves, executed_moves)
-    local offset_limit = math.floor(turtle.getFuelLimit()/2)
 
     for move_index, move in ipairs(moves) do
         local fuel_spent = fuel_required(full_moves)
-
-        if fuel_spent >= offset_limit then  -- Offset limit reached
-            break
-        end
 
         -- Check that there is more than enough fuel to return to the starting position
         if fuel_spent >= turtle.getFuelLevel()-1 then
