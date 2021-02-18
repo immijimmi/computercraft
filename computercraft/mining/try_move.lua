@@ -1,4 +1,5 @@
 local try_clean_inventory = require("mining.try_clean_inventory")
+local constants = require("mining.constants")
 
 
 function try_move(move, is_reverse_order)
