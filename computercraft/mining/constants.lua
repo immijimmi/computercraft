@@ -52,6 +52,11 @@ local constants = {
         turnRight = "turnLeft"
     },
 
+    non_fuel_moves = {
+        turnLeft=true,
+        turnRight=true
+    },
+
     resource_depths = {  -- Values should be the approximate centre of the most common y values for the resource
         diamond = {[1]=5, [2]=12},
         ancient_debris = {[1]=13, [2]=17},
