@@ -15,7 +15,7 @@ function try_clean_inventory()
         local item_detail = turtle.getItemDetail()
 
         if item_detail == nil then
-            empty_slots = empty_slots + 1
+            empty_slots = empty_slots+1
         end
     end
 
@@ -26,7 +26,7 @@ function try_clean_inventory()
 
             if item_detail ~= nil and constants.non_valuables[item_detail["name"]] then
                 turtle.drop()
-                empty_slots = empty_slots + 1
+                empty_slots = empty_slots+1
 
                 if empty_slots >= constants.empty_slots_required then  -- Stop once enough slots are empty
                     break
