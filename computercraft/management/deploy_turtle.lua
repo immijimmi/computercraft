@@ -35,6 +35,7 @@ function deploy_turtle(prior_moves)
 
     turtle.select(find_item("computercraft:turtle_normal"))
     turtle.place()
+    peripheral.call("front", "turnOn")
 
     turtle.turnLeft()
     turtle.forward()
