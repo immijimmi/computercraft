@@ -1,4 +1,3 @@
-local try_excavate = require("mining.try_excavate")
 local find_item = require("building.find_item")
 
 
