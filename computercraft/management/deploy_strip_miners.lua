@@ -12,7 +12,7 @@ function deploy_strip_miners(amount, curr_depth, resource, distance)
 
     set_startup_replace(file_contents)
 
-    deploy_turtles(amount, {[1]="right",[2]="forward"[3]="forward",[4]="turnLeft"}, 0)
+    deploy_turtles(amount, {[1]="right",[2]="forward",[3]="forward",[4]="turnLeft"}, 0)
 
     set_startup_replace()
 end
