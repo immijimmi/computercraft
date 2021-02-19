@@ -2,6 +2,8 @@ local has_items = require("turtle.has_items")
 local find_item = require("turtle.find_item")
 local error_if_not = require("data.error_if_not")
 local has_free_slots = require("turtle.has_free_slots")
+local constants = require("mining.constants")
+local execute_reversed_moves = require("mining.execute_reversed_moves")
 
 
 function lava_pool_refuel()
@@ -14,7 +16,7 @@ function lava_pool_refuel()
         turtle.placeDown()
 
         local lava_bucket_index = find_item("minecraft:lava_bucket")
-        if not lava_bucket_index == nil then
+        if not (lava_bucket_index == nil) then
             turtle.select(lava_bucket_index)
             turtle.refuel()
             return true
