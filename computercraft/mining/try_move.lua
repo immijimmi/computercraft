@@ -4,6 +4,8 @@ local constants = require("mining.constants")
 
 function try_move(move, is_reverse_order)
     --[[
+    A managed function for movement that will attempt to remove obstacles if necessary.
+
     Reverse order only affects whether turns are executed before movement. Any reversal of direction
     should be carried out externally with the resulting direction being used in this function
     --]]
