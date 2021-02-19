@@ -62,7 +62,9 @@ local constants = {
         ancient_debris = {[1]=13, [2]=17},
     },
 
-    empty_function = function() return true end
+    empty_function = function() return true end,
+
+    fuel_amounts = {["minecraft:lava_bucket"]=1000}
 }
 
 return constants
