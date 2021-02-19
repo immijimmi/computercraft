@@ -63,10 +63,6 @@ function lava_pool_refuel()
     end
     execute_reversed_moves(row_moves)
 
-    for i=1,3 do  -- Move the turtle back away from the lava pool so it is safe to pick up
-        turtle.back()
-    end
-
     turtle.select(current_slot_index)
 end
 
