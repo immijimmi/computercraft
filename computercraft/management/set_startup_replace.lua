@@ -1,7 +1,19 @@
 local find_item = require("turtle.find_item")
 
 
-function set_startup_replace(file_contents)
+function set_startup_replace(file_contents, do_check_space)
+    if do_check_space == nil then
+        do_check_space = true
+    end
+
+    if do_check_space then
+        local check_moves = {[1]="forward", [2]="back", [3]="turnLeft", [4]="turnLeft"}
+        error_if_not(
+            try_excavate(check_moves, prior_moves, false),
+            "unable to clear the required space"
+        )
+    end
+
     local current_slot_index = turtle.getSelectedSlot()
 
     turtle.select(find_item("computercraft:disk_drive"))
