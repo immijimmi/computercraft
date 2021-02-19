@@ -8,7 +8,7 @@ function deploy_lava_pool_refuels(amount)
     file_contents = file_contents.."local lava_pool_refuel = require('mining.lava_pool_refuel')\n\n"
     file_contents = file_contents.."orient()\n"
     file_contents = file_contents.."lava_pool_refuel()\n"
-    file_contents = file_contents.."for i=1,3 do turtle.back()"
+    file_contents = file_contents.."for i=1,3 do turtle.back() end"
 
     set_startup_replace(file_contents, true)
 
