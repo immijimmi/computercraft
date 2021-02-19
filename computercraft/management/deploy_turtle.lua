@@ -3,6 +3,8 @@ local execute_moves = require("mining.execute_moves")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
 local try_refuel = require("mining.try_refuel")
 local fuel_required = require("mining.fuel_required")
+local has_items = require("building.has_items")
+local error_if_not = require("building.error_if_not")
 local find_item = require("building.find_item")
 
 
@@ -14,6 +16,11 @@ function deploy_turtle(prior_moves, do_check_space)
     if do_check_space == nil then
         do_check_space = true
     end
+
+    error_if_not(
+        has_items({["computercraft:turtle_normal"=1, ["computercraft:disk_drive"]=1, ["computercraft:disk"]=1}),
+        "required items are not in inventory"
+    )
 
     if do_check_space then
         local check_moves = {[1]="forward", [2]="left", [3]="left", [4]="left", [5]="turnLeft"}
