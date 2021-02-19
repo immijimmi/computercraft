@@ -89,6 +89,10 @@ function try_strip_mine(curr_depth, resource, distance)
         turtle.turnLeft()
         turtle.turnLeft()
     end
+
+    turtle.back()  -- Move the turtle back away from the mined hole so it is safe to pick up
+
+    return true
 end
 
 
