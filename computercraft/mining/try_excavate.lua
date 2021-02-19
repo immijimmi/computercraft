@@ -6,6 +6,7 @@ local inspect_all = require("mining.inspect_all")
 local constants = require("mining.constants")
 local concat_lists = require("data.concat_lists")
 local fuel_required = require("mining.fuel_required")
+local error_if_not = require("data.error_if_not")
 
 
 function try_excavate(moves, prior_moves, do_backtrack)
@@ -28,10 +29,10 @@ function try_excavate(moves, prior_moves, do_backtrack)
         -- Check that will be more than enough fuel to return to the starting position, after the next move
         if fuel_spent >= turtle.getFuelLevel()-1 then
             execute_reversed_moves(full_moves)
-            if not try_refuel(fuel_spent) then
-                result = false
-                return result
-            end
+            error_if_not(
+                try_refuel(fuel_spent),
+                "unable to refuel"
+            )
             execute_moves(full_moves)
         end
 
