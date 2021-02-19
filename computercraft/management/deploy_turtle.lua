@@ -6,9 +6,15 @@ local fuel_required = require("mining.fuel_required")
 local has_items = require("turtle.has_items")
 local error_if_not = require("data.error_if_not")
 local find_item = require("turtle.find_item")
+local merged_item_counts = require("data.merged_item_counts")
 
 
-function deploy_turtle(prior_moves, do_check_space)
+function deploy_turtle(prior_moves, do_check_space, give_items)
+    --[[
+    Note that this function is not designed to necessarily always conclude at the starting position,
+    as it is not expected to venture far enough away for this to be an issue
+    --]]
+
     -- Default values
     if prior_moves == nil then
         prior_moves = {}
@@ -16,9 +22,13 @@ function deploy_turtle(prior_moves, do_check_space)
     if do_check_space == nil then
         do_check_space = true
     end
+    if give_items == nil then
+        give_items = {}
+    end
 
+    local deploy_items = {["computercraft:turtle_normal"=1, ["computercraft:disk_drive"]=1, ["computercraft:disk"]=1}
     error_if_not(
-        has_items({["computercraft:turtle_normal"=1, ["computercraft:disk_drive"]=1, ["computercraft:disk"]=1}),
+        has_items(merged_item_counts(deploy_items, give_items)),
         "required items are not in inventory"
     )
 
@@ -62,6 +72,12 @@ function deploy_turtle(prior_moves, do_check_space)
     turtle.forward()
     turtle.turnLeft()
 
+    for item_name, item_count in pairs(give_items) do
+        for count=1,item_count do
+            turtle.select(find_item(item_name))
+            turtle.drop(1)
+        end
+    end
     peripheral.call("front", "reboot")
 
     turtle.turnLeft()
