@@ -9,7 +9,8 @@ function deploy_lava_pool_refuels(amount)
 
     set_startup_replace(file_contents)
 
-    deploy_turtles(amount, {[1]="right",[2]="turnLeft"}, 0)
+    local give_items = {"minecraft:bucket"=1}
+    deploy_turtles(amount, {[1]="right",[2]="turnLeft"}, 0, give_items)
 
     set_startup_replace()
 end

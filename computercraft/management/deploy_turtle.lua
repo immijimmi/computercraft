@@ -26,7 +26,7 @@ function deploy_turtle(prior_moves, do_check_space, give_items)
         give_items = {}
     end
 
-    local deploy_items = {["computercraft:turtle_normal"=1, ["computercraft:disk_drive"]=1, ["computercraft:disk"]=1}
+    local deploy_items = {["computercraft:turtle_normal"]=1, ["computercraft:disk_drive"]=1, ["computercraft:disk"]=1}
     error_if_not(
         has_items(merged_item_counts(deploy_items, give_items)),
         "required items are not in inventory"

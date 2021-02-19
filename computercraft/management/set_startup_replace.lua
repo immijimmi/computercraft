@@ -10,7 +10,7 @@ function set_startup_replace(file_contents)
         error("unable to place the disk drive")
     end
 
-    turtle.select(find_item("computercraft:disk")
+    turtle.select(find_item("computercraft:disk"))
     turtle.drop()
 
     if file_contents == nil then
