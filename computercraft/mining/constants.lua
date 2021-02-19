@@ -33,8 +33,12 @@ local constants = {
         ["minecraft:glowstone"] = true,
         ["minecraft:nether_quartz_ore"] = true,
 
+        -- Ars Nouveau
+        ["ars_nouveau:arcane_ore"] = true,
+
         -- Applied Energistics 2 (WIP)
-        ["appliedenergistics2:sky_stone_block"] = true
+        ["appliedenergistics2:sky_stone_block"] = true,
+        ["appliedenergistics2:charged_quartz_ore"] = true
     },
 
     empty_slots_required = 2,
