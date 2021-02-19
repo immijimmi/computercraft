@@ -64,7 +64,9 @@ local constants = {
 
     empty_function = function() return true end,
 
-    fuel_amounts = {["minecraft:lava_bucket"]=1000}
+    fuel_amounts = {["minecraft:lava_bucket"]=1000},
+
+    non_solid_blocks = {["minecraft:water"]=true, ["minecraft:lava"]=true}
 }
 
 return constants

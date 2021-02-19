@@ -4,7 +4,9 @@ local deploy_turtles = require("management.deploy_turtles")
 
 function deploy_lava_pool_refuels(amount)
     local file_contents = "shell.run('delete startup.lua')\n\n"
+    file_contents = file_contents.."local orient = require('turtle.orient')\n"
     file_contents = file_contents.."local lava_pool_refuel = require('mining.lava_pool_refuel')\n\n"
+    file_contents = file_contents.."orient()\n"
     file_contents = file_contents.."lava_pool_refuel()"
 
     set_startup_replace(file_contents)
