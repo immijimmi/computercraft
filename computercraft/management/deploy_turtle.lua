@@ -3,9 +3,9 @@ local execute_moves = require("mining.execute_moves")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
 local try_refuel = require("mining.try_refuel")
 local fuel_required = require("mining.fuel_required")
-local has_items = require("building.has_items")
+local has_items = require("turtle.has_items")
 local error_if_not = require("data.error_if_not")
-local find_item = require("building.find_item")
+local find_item = require("turtle.find_item")
 
 
 function deploy_turtle(prior_moves, do_check_space)
