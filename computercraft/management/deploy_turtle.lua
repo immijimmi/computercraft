@@ -24,9 +24,10 @@ function deploy_turtle(prior_moves, do_check_space)
 
     if do_check_space then
         local check_moves = {[1]="forward", [2]="left", [3]="left", [4]="left", [5]="turnLeft"}
-        if not try_excavate(check_moves, prior_moves, false) then
-            error("unable to clear the required space")
-        end
+        error_if_not(
+            try_excavate(check_moves, prior_moves, false),
+            "unable to clear the required space"
+        )
     end
 
     local fuel_spent = fuel_required(prior_moves)
@@ -35,9 +36,10 @@ function deploy_turtle(prior_moves, do_check_space)
 
     if turtle.getFuelLevel() < remaining_fuel_required then  -- If fuel limit is reached
         execute_reversed_moves(prior_moves)
-        if not try_refuel(remaining_fuel_required + fuel_spent, false) then
-            error("insufficient fuel")
-        end
+        error_if_not(
+            try_refuel(remaining_fuel_required + fuel_spent, false),
+            "insufficient fuel"
+        )
         execute_moves(prior_moves)
     end
 
