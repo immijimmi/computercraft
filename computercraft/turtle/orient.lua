@@ -7,7 +7,7 @@ function orient()
     If the turtle was placed above a non-solid block, it will be facing the opposite direction to normal
     --]]
 
-    local floor = turtle.inspectDown()
+    local success, floor = turtle.inspectDown()
 
     if floor == nil or constants.non_solid_blocks[floor["name"]] then
         turtle.turnLeft()
