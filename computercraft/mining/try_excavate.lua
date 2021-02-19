@@ -4,7 +4,7 @@ local execute_reversed_moves = require("mining.execute_reversed_moves")
 local try_refuel = require("mining.try_refuel")
 local inspect_all = require("mining.inspect_all")
 local constants = require("mining.constants")
-local concat_lists = require("mining.concat_lists")
+local concat_lists = require("data.concat_lists")
 local fuel_required = require("mining.fuel_required")
 
 
