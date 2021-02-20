@@ -10,6 +10,12 @@ local error_if_not = require("data.error_if_not")
 
 
 function try_excavate(moves, prior_moves, do_backtrack)
+    --[[
+    This function carries out a sequence of moves using try_move(), checking for ores around itself after each step.
+    Any ores that are discovered will trigger recursion in order to mine the full ore node out before continuing.
+    Fuel usage is also managed and refueling is attempted as necessary via try_refuel()
+    --]]
+
     -- Default values
     if prior_moves == nil then
         prior_moves = {}
