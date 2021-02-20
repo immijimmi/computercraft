@@ -16,7 +16,7 @@ function deploy_turtles(amount, moves_between, delay_between, give_items)
         moves_between = {}
     end
     if delay_between == nil then
-        delay_between = 1
+        delay_between = 0
     end
     if give_items == nil then
         give_items = {}
