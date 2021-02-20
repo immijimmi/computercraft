@@ -1,4 +1,4 @@
-local constants = require("mining.constants")
+local constants = require("turtle.constants")
 
 
 function orient()
