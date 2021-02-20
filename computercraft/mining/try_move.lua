@@ -45,13 +45,13 @@ function try_move(move, is_reverse_order)
 
     function get_commands()
         if move == "up" then
-            return {[1] = turtle.up, [2] = turtle.digUp}
+            return {turtle.up, turtle.digUp, turtle.inspectUp}
         elseif move == "down" then
-            return {[1] = turtle.down, [2] = turtle.digDown}
+            return {turtle.down, turtle.digDown, turtle.inspectDown}
         elseif move == "turnLeft" or move == "turnRight" then
-            return {[1] = constants.empty_function, [2] = constants.empty_function}
+            return {constants.empty_function}
         else
-            return {[1] = turtle.forward, [2] = turtle.dig}
+            return {turtle.forward, turtle.dig, turtle.inspect}
         end
     end
 
@@ -59,6 +59,7 @@ function try_move(move, is_reverse_order)
     local commands = get_commands()
     local move_command = commands[1]
     local dig_command = commands[2]
+    local inspect_command = commands[3]
 
     function try_move_command()
         for attempt=1,100 do
@@ -66,15 +67,15 @@ function try_move(move, is_reverse_order)
                 return true
             elseif attempt == 100 then
                 return false
-            elseif not try_clean_inventory() then
-                return false
             end
 
-            local inspect_success, block = turtle.inspect()
-
-            if inspect_success and string.find(block["name"], "computercraft:") == 1 then
+            local inspect_success, block = inspect_command()
+            if (not inspect_success) or (inspect_success and string.find(block["name"], "computercraft:") == 1 then
                 os.sleep(constants.move_attempt_wait_time)
             else
+                if not try_clean_inventory() then
+                    return false
+                end
                 dig_command()
             end
         end
