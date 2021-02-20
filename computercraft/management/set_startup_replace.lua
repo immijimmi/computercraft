@@ -1,9 +1,14 @@
 local find_item = require("turtle.find_item")
+local try_excavate = require("mining.try_excavate")
 
 
-function set_startup_replace(file_contents, do_check_space)
+function set_startup_replace(file_contents, do_check_space, prior_moves)
+    -- Default values
     if do_check_space == nil then
         do_check_space = true
+    end
+    if prior_moves == nil then
+        do_check_space = {}
     end
 
     if do_check_space then
