@@ -11,7 +11,7 @@ function inspect_all()
         result["down"] = value
     end
 
-    for _, direction in ipairs({[1]="forward", [2]="left", [3]="back", [4]="right"}) do
+    for _, direction in ipairs({"forward", "left", "back", "right"}) do
         local success, value = turtle.inspect()
         if success then
             result[direction] = value

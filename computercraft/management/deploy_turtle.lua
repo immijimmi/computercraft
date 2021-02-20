@@ -40,11 +40,11 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
     local drive_moves = constants.drive_moves[drive_position]
     if do_check_space then
         error_if_not(
-            try_excavate({[1]="forward"}, prior_moves, true),
+            try_excavate({"forward"}, prior_moves, true),
             "unable to clear the required space"
         )
 
-        local drive_check_moves = concat_lists(drive_moves, {[1]="forward"})
+        local drive_check_moves = concat_lists(drive_moves, {"forward"})
         error_if_not(
             try_excavate(drive_check_moves, prior_moves, true),
         )

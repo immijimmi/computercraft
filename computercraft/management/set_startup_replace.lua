@@ -12,7 +12,7 @@ function set_startup_replace(file_contents, do_check_space, prior_moves)
     end
 
     if do_check_space then
-        local check_moves = {[1]="forward", [2]="back", [3]="turnLeft", [4]="turnLeft"}
+        local check_moves = {"forward", "back", "turnLeft", "turnLeft"}
         error_if_not(
             try_excavate(check_moves, prior_moves, false),
             "unable to clear the required space"

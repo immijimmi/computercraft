@@ -62,8 +62,8 @@ local constants = {
     },
 
     resource_depths = {  -- Values should be the approximate centre of the most common y values for the resource
-        diamond = {[1]=5, [2]=12},
-        ancient_debris = {[1]=13, [2]=17},
+        diamond = {5, 12},
+        ancient_debris = {13, 17},
     },
 
     empty_function = function() return true end,

@@ -63,7 +63,7 @@ function try_excavate(moves, prior_moves, do_backtrack)
 
             for key, block in pairs(surrounding_blocks) do
                 if constants.valuables[block["name"]] then
-                    local excavate_result = try_excavate({[1]=key}, full_moves)
+                    local excavate_result = try_excavate({key}, full_moves)
                     if not excavate_result then
                         result = false
                         return result

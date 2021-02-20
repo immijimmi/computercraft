@@ -16,7 +16,7 @@ function deploy_strip_miners(amount, curr_depth, resource, distance)
     turtle.turnLeft()
     turtle.turnLeft()
 
-    deploy_turtles(amount, {[1]="right",[2]="forward",[3]="forward",[4]="turnLeft"}, 0)
+    deploy_turtles(amount, {"right", "forward", "forward", "turnLeft"}, 0)
 
     turtle.turnLeft()
     turtle.turnLeft()
