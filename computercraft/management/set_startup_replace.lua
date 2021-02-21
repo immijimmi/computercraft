@@ -8,7 +8,7 @@ function set_startup_replace(file_contents, do_check_space, prior_moves)
         do_check_space = true
     end
     if prior_moves == nil then
-        do_check_space = {}
+        prior_moves = {}
     end
 
     if do_check_space then
