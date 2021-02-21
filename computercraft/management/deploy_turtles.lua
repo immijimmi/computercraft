@@ -41,13 +41,13 @@ function deploy_turtles(amount, moves_between, delay_between, drive_position, gi
                 execute_reversed_moves(executed_moves)
                 error("unable to clear the required space")
             end
-            moves = concat_lists(executed_moves, moves_between)
+            executed_moves = concat_lists(executed_moves, moves_between)
         end
 
         deploy_turtle(executed_moves, not is_static, drive_position, give_items)
     end
 
-    execute_reversed_moves(moves)
+    execute_reversed_moves(executed_moves)
 end
 
 
