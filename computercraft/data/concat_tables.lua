@@ -13,4 +13,4 @@ function concat_tables(a, b)
 end
 
 
-return concat_lists
+return concat_tables
