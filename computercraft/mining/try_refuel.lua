@@ -15,9 +15,9 @@ function try_refuel(fuel_required, is_offset)
     end
 
     if turtle.getFuelLevel() < fuel_required then
-        return False
+        return false
     else
-        return True
+        return true
     end
 end
 
