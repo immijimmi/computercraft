@@ -17,7 +17,7 @@ function deploy_lava_pool_refuels(amount)
 
     local deploy_success, deploy_data = pcall(
         function()
-            deploy_turtles(amount, {"right", "turnLeft"}, 0, "top_side", {["minecraft:bucket"]=1})
+            deploy_turtles(amount, {"right", "turnLeft"}, 0, "right_side", {["minecraft:bucket"]=1})
         end
     )
 

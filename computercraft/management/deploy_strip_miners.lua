@@ -18,7 +18,7 @@ function deploy_strip_miners(amount, curr_depth, resource, distance)
 
     local deploy_success, deploy_data = pcall(
         function()
-            deploy_turtles(amount, {"right", "forward", "forward", "turnLeft"}, 0)
+            deploy_turtles(amount, {"right", "forward", "forward", "turnLeft"}, 0, "right_side")
         end
     )
 
