@@ -1,5 +1,6 @@
 local find_item = require("turtle.find_item")
 local try_excavate = require("mining.try_excavate")
+local turn_to = require("turtle.turn_to")
 local cc_constants = require("constants")
 
 
@@ -30,28 +31,6 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
         end
     end
 
-    function apply_turns(is_reverse)
-        if not is_reverse then
-            if direction == "left" then
-                turtle.turnLeft()
-            elseif direction == "right" then
-                turtle.turnRight()
-            elseif direction == "back" then
-                turtle.turnLeft()
-                turtle.turnLeft()
-            end
-        else
-            if direction == "left" then
-                turtle.turnRight()
-            elseif direction == "right" then
-                turtle.turnLeft()
-            elseif direction == "back" then
-                turtle.turnLeft()
-                turtle.turnLeft()
-            end
-        end
-    end
-
     if do_check_space then
         error_if_not(
             try_excavate({direction}, prior_moves),
@@ -68,10 +47,10 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
     local suck_command = commands[4]
 
     turtle.select(find_item("computercraft:disk_drive"))
-    apply_turns()
+    turn_to(direction)
 
     if not place_command() then
-        apply_turns(true)
+        turn_to(direction, true)
         turtle.select(current_slot_index)
         error("unable to place the disk drive")
     end
@@ -90,7 +69,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
     suck_command()
     dig_command()
 
-    apply_turns(true)
+    turn_to(direction, true)
     turtle.select(current_slot_index)
 end
 

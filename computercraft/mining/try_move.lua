@@ -1,5 +1,6 @@
 local try_clean_inventory = require("mining.try_clean_inventory")
 local constants = require("mining.constants")
+local turn_to = require("turtle.turn_to")
 local cc_constants = require("constants")
 local error_if_not = require("data.error_if_not")
 
@@ -22,29 +23,6 @@ function try_move(move, is_reverse_order)
         cc_constants.moves_lookup[move],
         move
     )
-
-    function apply_turns(is_reverse)
-        if not is_reverse then
-            if move == "left" or move == "turnLeft" then
-                turtle.turnLeft()
-            elseif move == "right" or move == "turnRight" then
-                turtle.turnRight()
-            elseif move == "back" then
-                turtle.turnRight()
-                turtle.turnRight()
-            end
-
-        else
-            if move == "left" or move == "turnLeft" then
-                turtle.turnRight()
-            elseif move == "right" or move == "turnRight" then
-                turtle.turnLeft()
-            elseif move == "back" then
-                turtle.turnLeft()
-                turtle.turnLeft()
-            end
-        end
-    end
 
     function get_commands()
         if move == "up" then
@@ -85,17 +63,17 @@ function try_move(move, is_reverse_order)
     end
 
     if not is_reverse_order then
-        apply_turns()
+        turn_to(move)
         if try_move_command() then
             return true
         else
-            apply_turns(true)
+            turn_to(move, true)
             return false
         end
 
     else
         if try_move_command() then
-            apply_turns()
+            turn_to(move)
             return true
         else
             return false
