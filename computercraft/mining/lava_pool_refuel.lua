@@ -11,7 +11,7 @@ function lava_pool_refuel()
     Assumes the turtle is directly above lava and facing towards a lava pool.
     --]]
 
-    function try_lava_refuel_down()
+    local function try_lava_refuel_down()
         turtle.select(find_item("minecraft:bucket"))
         turtle.placeDown()
 
@@ -25,7 +25,7 @@ function lava_pool_refuel()
         return false
     end
 
-    function can_lava_refuel()
+    local function can_lava_refuel()
         return turtle.getFuelLevel() + constants.fuel_amounts["minecraft:lava_bucket"] < turtle.getFuelLimit()
     end
 

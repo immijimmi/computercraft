@@ -21,7 +21,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
         direction
     )
 
-    function get_commands()
+    local function get_commands()
         if direction == "up" then
             return {turtle.placeUp, turtle.digUp, turtle.dropUp, turtle.suckUp}
         elseif direction == "down" then

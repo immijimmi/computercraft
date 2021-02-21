@@ -24,7 +24,7 @@ function try_move(move, is_reverse_order)
         move
     )
 
-    function get_commands()
+    local function get_commands()
         if move == "up" then
             return {turtle.up, turtle.digUp, turtle.inspectUp}
         elseif move == "down" then
@@ -42,7 +42,7 @@ function try_move(move, is_reverse_order)
     local dig_command = commands[2]
     local inspect_command = commands[3]
 
-    function try_move_command()
+    local function try_move_command()
         for attempt=1,100 do
             if move_command() then
                 return true
