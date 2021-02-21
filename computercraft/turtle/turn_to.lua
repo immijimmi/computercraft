@@ -9,7 +9,7 @@ function turn_to(move_or_direction, is_reverse)
     end
 
     error_if_not(
-        constants.moves_lookup[move_or_direction],
+        cc_constants.moves_lookup[move_or_direction],
         move_or_direction
     )
 
