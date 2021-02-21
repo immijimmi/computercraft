@@ -1,6 +1,6 @@
 local find_item = require("turtle.find_item")
 local try_excavate = require("mining.try_excavate")
-local constants = require("management.constants")
+local cc_constants = require("constants")
 
 
 function set_startup_replace(file_contents, direction, do_check_space, prior_moves)
@@ -16,7 +16,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
     end
 
     error_if_not(
-        constants.valid_directions[direction],
+        cc_constants.valid_directions[direction],
         direction
     )
 
