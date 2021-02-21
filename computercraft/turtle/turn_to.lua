@@ -3,6 +3,11 @@ local cc_constants = require("constants")
 
 
 function turn_to(move_or_direction, is_reverse)
+    -- Default values
+    if is_reverse == nil then
+        is_reverse = false
+    end
+
     error_if_not(
         constants.moves_lookup[move_or_direction],
         move_or_direction
