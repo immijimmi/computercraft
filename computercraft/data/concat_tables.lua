@@ -5,7 +5,7 @@ function concat_tables(a, b)
         result[key] = value
     end
 
-    for key, value in ipairs(b) do
+    for key, value in pairs(b) do
         result[key] = value
     end
 
