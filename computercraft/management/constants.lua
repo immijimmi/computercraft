@@ -9,7 +9,9 @@ local constants = {
         ["computercraft:turtle_normal"]=1,
         ["computercraft:disk_drive"]=1,
         ["computercraft:disk"]=1
-    }
+    },
+
+    valid_directions = {["forward"]=true, ["back"]=true, ["up"]=true, ["down"]=true, ["left"]=true, ["right"]=true}
 }
 
 return constants

@@ -10,11 +10,7 @@ function deploy_strip_miners(amount, curr_depth, resource, distance)
     file_contents = file_contents.."try_strip_mine(%d, '%s', %d)\n"
     file_contents = string.format(file_contents, curr_depth, resource, distance)
 
-    turtle.turnLeft()
-    turtle.turnLeft()
-    set_startup_replace(file_contents, true)
-    turtle.turnLeft()
-    turtle.turnLeft()
+    set_startup_replace(file_contents, "up", true)
 
     local deploy_success, deploy_data = pcall(
         function()
@@ -22,20 +18,14 @@ function deploy_strip_miners(amount, curr_depth, resource, distance)
         end
     )
 
-    turtle.turnLeft()
-    turtle.turnLeft()
-
     local reset_startup_success, reset_startup_data = pcall(
         function()
-            set_startup_replace(nil, not deploy_success)
+            set_startup_replace(nil, "up", not deploy_success)
         end
     )
     if (not reset_startup_success) and (not deploy_success) then
-        set_startup_replace(nil, false)  -- Assumes that the last set_startup_replace failed due to lack of fuel
+        set_startup_replace(nil, "up", false)  -- Assumes that the last set_startup_replace failed due to lack of fuel
     end
-
-    turtle.turnLeft()
-    turtle.turnLeft()
 
     if not deploy_success then
         error(deploy_data)
