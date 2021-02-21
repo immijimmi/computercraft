@@ -47,6 +47,7 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
         local drive_check_moves = concat_lists(drive_moves, {"forward"})
         error_if_not(
             try_excavate(drive_check_moves, prior_moves, true),
+            "unable to clear the required space"
         )
     end
 
