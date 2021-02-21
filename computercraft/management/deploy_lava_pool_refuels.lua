@@ -1,36 +1,24 @@
-local set_startup_replace = require("management.set_startup_replace")
-local deploy_turtles = require("management.deploy_turtles")
+local handle_deployment = require("management.handle_deployment")
 
 
 function deploy_lava_pool_refuels(amount)
-    local file_contents = "shell.run('delete startup.lua')\n\n"
-    file_contents = file_contents.."local orient = require('turtle.orient')\n"
-    file_contents = file_contents.."local lava_pool_refuel = require('mining.lava_pool_refuel')\n\n"
-    file_contents = file_contents.."orient()\n"
-    file_contents = file_contents.."lava_pool_refuel()\n"
+    local file_contents = [[
+shell.run("delete startup.lua")
 
-    set_startup_replace(file_contents, "up", true)
+local orient = require("turtle.orient")
+local lava_pool_refuel = require("mining.lava_pool_refuel")
 
-    local deploy_success, deploy_data = pcall(
-        function()
-            deploy_turtles(amount, {"right", "turnLeft"}, 0, "right_side", {["minecraft:bucket"]=1})
-        end
+orient()
+lava_pool_refuel()
+]]
+
+    local moves_between = {"right", "turnLeft"}
+    local give_items = {["minecraft:bucket"]=1}
+
+    handle_deployment(
+    file_contents, "up",
+    amount, moves_between, 0, "right_side", give_items
     )
-
-    local reset_startup_success, reset_startup_data = pcall(
-        function()
-            set_startup_replace(nil, "up", not deploy_success)
-        end
-    )
-    if (not reset_startup_success) and (not deploy_success) then
-        set_startup_replace(nil, "up", false)  -- Assumes that the last set_startup_replace failed due to lack of fuel
-    end
-
-    if not deploy_success then
-        error(deploy_data)
-    elseif not reset_startup_success then
-        error(reset_startup_data)
-    end
 end
 
 
