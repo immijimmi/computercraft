@@ -3,8 +3,11 @@ local execute_moves = require("mining.execute_moves")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
 local try_refuel = require("mining.try_refuel")
 local inspect_all = require("turtle.inspect_all")
+local inspect_direction = require("turtle.inspect_direction")
 local constants = require("mining.constants")
+local cc_constants = require("constants")
 local concat_lists = require("data.concat_lists")
+local concat_tables = require("data.concat_tables")
 local fuel_required = require("mining.fuel_required")
 local error_if_not = require("data.error_if_not")
 
@@ -54,16 +57,18 @@ function try_excavate(moves, prior_moves, do_backtrack)
             fuel_spent = fuel_spent+1
 
             -- Inspecting the new surroundings for valuable ores
-            local surrounding_blocks = inspect_all()
+            local inspect_directions = concat_tables({}, cc_constants.valid_directions)
 
             local next_move = moves[move_index+1]
             if next_move then
-                surrounding_blocks[next_move] = nil  -- If a move is already next, it does not need excavating
+                inspect_directions[next_move] = nil  -- If a move is already next, it does not need inspecting
             end
 
-            for key, block in pairs(surrounding_blocks) do
-                if constants.valuables[block["name"]] then
-                    local excavate_result = try_excavate({key}, full_moves)
+            for direction, _ in pairs(inspect_directions) do
+                local block = inspect_direction(direction)
+
+                if block and constants.valuables[block["name"]] then
+                    local excavate_result = try_excavate({direction}, full_moves)
                     if not excavate_result then
                         result = false
                         return result
