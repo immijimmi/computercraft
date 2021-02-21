@@ -37,7 +37,7 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
     )
 
     -- Clearing space is hoisted rather than inline so that cleaning up placed items is not necessary when it fails
-    local drive_moves = constants.drive_moves[drive_position]
+    local drive_moves = constants.drive_positions[drive_position]
     if do_check_space then
         error_if_not(
             try_excavate({"forward"}, prior_moves, true),
