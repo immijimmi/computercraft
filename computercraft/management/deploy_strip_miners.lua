@@ -16,13 +16,32 @@ function deploy_strip_miners(amount, curr_depth, resource, distance)
     turtle.turnLeft()
     turtle.turnLeft()
 
-    deploy_turtles(amount, {"right", "forward", "forward", "turnLeft"}, 0)
+    local deploy_success, deploy_data = pcall(
+        function()
+            deploy_turtles(amount, {"right", "forward", "forward", "turnLeft"}, 0)
+        end
+    )
 
     turtle.turnLeft()
     turtle.turnLeft()
-    set_startup_replace()
+
+    local reset_startup_success, reset_startup_data = pcall(
+        function()
+            set_startup_replace(nil, not deploy_success)
+        end
+    )
+    if (not reset_startup_success) and (not deploy_success) then
+        set_startup_replace(nil, false)  -- Assumes that the last set_startup_replace failed due to lack of fuel
+    end
+
     turtle.turnLeft()
     turtle.turnLeft()
+
+    if not deploy_success then
+        error(deploy_data)
+    elseif not reset_startup_success then
+        error(reset_startup_data)
+    end
 end
 
 
