@@ -54,7 +54,7 @@ function try_move(move, is_reverse_order)
             if (not inspect_success) or (inspect_success and string.find(block["name"], "computercraft:") == 1) then
                 os.sleep(constants.move_attempt_wait_time)
             else
-                if not try_clean_inventory() then
+                if not try_clean_inventory(constants.empty_slots_required, true) then
                     return false
                 end
                 dig_command()
