@@ -9,7 +9,7 @@ function orient()
 
     local success, floor = turtle.inspectDown()
 
-    if floor == nil or constants.non_solid_blocks[floor["name"]] then
+    if success == false or constants.non_solid_blocks[floor["name"]] then
         turtle.turnLeft()
         turtle.turnLeft()
     end
