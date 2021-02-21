@@ -1,5 +1,6 @@
 local try_clean_inventory = require("mining.try_clean_inventory")
 local constants = require("mining.constants")
+local cc_constants = require("constants")
 local error_if_not = require("data.error_if_not")
 
 
@@ -18,7 +19,7 @@ function try_move(move, is_reverse_order)
     end
 
     error_if_not(
-        constants.moves_lookup[move],
+        cc_constants.moves_lookup[move],
         move
     )
 

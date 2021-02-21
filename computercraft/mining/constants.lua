@@ -47,17 +47,6 @@ local constants = {
 
     move_attempt_wait_time = 0.5,
 
-    moves_lookup = {  -- Doubles as both a set and a lookup for reversed moves
-        left = "right",
-        right = "left",
-        up = "down",
-        down = "up",
-        forward = "forward",
-        back = "back",
-        turnLeft = "turnRight",
-        turnRight = "turnLeft"
-    },
-
     non_fuel_moves = {
         turnLeft=true,
         turnRight=true

@@ -1,5 +1,5 @@
 local execute_moves = require("mining.execute_moves")
-local constants = require("mining.constants")
+local cc_constants = require("constants")
 
 
 function execute_reversed_moves(moves)
@@ -12,7 +12,7 @@ function execute_reversed_moves(moves)
     for index, move in ipairs(moves) do
         reverse_index = #moves - (index-1)
 
-        reversed_moves[reverse_index] = constants.moves_lookup[move]
+        reversed_moves[reverse_index] = cc_constants.moves_lookup[move]
     end
 
     turtle.turnRight()
