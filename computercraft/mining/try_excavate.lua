@@ -71,7 +71,6 @@ function try_excavate(moves, prior_moves, do_backtrack)
                     local excavate_result = try_excavate({direction}, full_moves)
                     if not excavate_result then
                         result = false
-                        return result
                     end
                 end
             end
