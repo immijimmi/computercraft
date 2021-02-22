@@ -40,6 +40,7 @@ local constants = {
 
         -- Applied Energistics 2 (WIP)
         ["appliedenergistics2:sky_stone_block"]=true,
+        ["appliedenergistics2:quartz_ore"]=true,
         ["appliedenergistics2:charged_quartz_ore"]=true
     },
 
