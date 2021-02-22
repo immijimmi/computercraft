@@ -25,7 +25,7 @@ function try_clean_inventory(empty_slots_required, is_eager)
         if item_detail == nil then
             empty_slots = empty_slots+1
         elseif constants.non_valuables[item_detail["name"]] then
-            non_valuables_indexes[#non_valuables_indexes] = slot_index
+            non_valuables_indexes[#non_valuables_indexes+1] = slot_index
         end
     end
 
