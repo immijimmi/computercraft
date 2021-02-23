@@ -16,7 +16,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
         prior_moves = {}
     end
 
-    error_if_not(
+    assert(
         cc_constants.valid_directions[direction],
         direction
     )
@@ -32,7 +32,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
     end
 
     if do_check_space then
-        error_if_not(
+        assert(
             try_excavate({direction}, prior_moves),
             "unable to clear the required space"
         )

@@ -1,5 +1,4 @@
 local try_move = require("mining.try_move")
-local error_if_not = require("data.error_if_not")
 
 
 function execute_moves(moves, is_reverse_order)
@@ -9,7 +8,7 @@ function execute_moves(moves, is_reverse_order)
     --]]
 
     for _, move in ipairs(moves) do
-        error_if_not(
+        assert(
             try_move(move, is_reverse_order),
             "unable to complete move sequence"
         )

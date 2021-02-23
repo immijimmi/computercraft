@@ -1,4 +1,3 @@
-local error_if_not = require("data.error_if_not")
 local cc_constants = require("constants")
 
 
@@ -8,7 +7,7 @@ function turn_to(move_or_direction, is_reverse)
         is_reverse = false
     end
 
-    error_if_not(
+    assert(
         cc_constants.moves_lookup[move_or_direction],
         move_or_direction
     )

@@ -4,7 +4,6 @@ local execute_reversed_moves = require("mining.execute_reversed_moves")
 local try_refuel = require("mining.try_refuel")
 local fuel_required = require("mining.fuel_required")
 local has_items = require("turtle.has_items")
-local error_if_not = require("data.error_if_not")
 local find_item = require("turtle.find_item")
 local merged_item_counts = require("data.merged_item_counts")
 local constants = require("management.constants")
@@ -31,7 +30,7 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
         give_items = {}
     end
 
-    error_if_not(
+    assert(
         has_items(merged_item_counts(constants.deploy_items, give_items)),
         "required items are not in inventory"
     )
@@ -39,13 +38,13 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
     -- Clearing space is hoisted rather than inline so that cleaning up placed items is not necessary when it fails
     local drive_moves = constants.drive_positions[drive_position]
     if do_check_space then
-        error_if_not(
+        assert(
             try_excavate({"forward"}, prior_moves, true),
             "unable to clear the required space"
         )
 
         local drive_check_moves = concat_lists(drive_moves, {"forward"})
-        error_if_not(
+        assert(
             try_excavate(drive_check_moves, prior_moves, true),
             "unable to clear the required space"
         )
@@ -58,7 +57,7 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
 
     if turtle.getFuelLevel() < remaining_fuel_required then
         execute_reversed_moves(prior_moves)
-        error_if_not(
+        assert(
             try_refuel(remaining_fuel_required + fuel_spent, false),
             "insufficient fuel"
         )

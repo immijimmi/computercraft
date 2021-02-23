@@ -1,7 +1,6 @@
 local deploy_turtle = require("management.deploy_turtle")
 local concat_lists = require("data.concat_lists")
 local try_excavate = require("mining.try_excavate")
-local error_if_not = require("data.error_if_not")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
 
 

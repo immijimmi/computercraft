@@ -1,6 +1,5 @@
 local has_items = require("turtle.has_items")
 local find_item = require("turtle.find_item")
-local error_if_not = require("data.error_if_not")
 local has_free_slots = require("turtle.has_free_slots")
 local constants = require("mining.constants")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
@@ -29,7 +28,7 @@ function lava_pool_refuel()
         return turtle.getFuelLevel() + constants.fuel_amounts["minecraft:lava_bucket"] < turtle.getFuelLimit()
     end
 
-    error_if_not(
+    assert(
         has_items({["minecraft:bucket"]=1}) and has_free_slots(1),
         "turtle needs an empty bucket to refuel using lava, "..
         "and one free slot to hold the lava bucket incase the empty bucket is in a stack of more than 1"

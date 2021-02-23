@@ -2,7 +2,6 @@ local try_clean_inventory = require("mining.try_clean_inventory")
 local constants = require("mining.constants")
 local turn_to = require("turtle.turn_to")
 local cc_constants = require("constants")
-local error_if_not = require("data.error_if_not")
 
 
 function try_move(move, is_reverse_order)
@@ -19,7 +18,7 @@ function try_move(move, is_reverse_order)
         is_reverse_order = false
     end
 
-    error_if_not(
+    assert(
         cc_constants.moves_lookup[move],
         move
     )
