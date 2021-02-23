@@ -31,7 +31,7 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
     end
 
     assert(
-        has_items(merged_item_counts(constants.deploy_items, give_items)),
+        has_items(merged_item_counts(constants.deploy_items, {["computercraft:turtle_normal"]=1}, give_items)),
         "required items are not in inventory"
     )
 

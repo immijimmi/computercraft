@@ -5,8 +5,8 @@ local constants = {
         right_side={"right", "turnLeft"}
     },
 
-    deploy_items = {  -- Generic required items a deployer requires to deploy one turtle
-        ["computercraft:turtle_normal"]=1,
+    -- Generic items a deployer requires, excluding any deployable turtles and the items they in turn require for whatever task
+    deploy_items = {
         ["computercraft:disk_drive"]=1,
         ["computercraft:disk"]=1
     }
