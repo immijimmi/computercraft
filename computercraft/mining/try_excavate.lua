@@ -11,7 +11,7 @@ local concat_tables = require("data.concat_tables")
 local fuel_required = require("mining.fuel_required")
 
 
-function try_excavate(moves, prior_moves, do_backtrack)
+function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_if_fail)
     --[[
     This function carries out a sequence of moves using try_move(), checking for ores around itself after each step.
     Any ores that are discovered will trigger recursion in order to mine the full ore node out before continuing.
@@ -22,8 +22,11 @@ function try_excavate(moves, prior_moves, do_backtrack)
     if prior_moves == nil then
         prior_moves = {}
     end
-    if do_backtrack == nil then
-        do_backtrack = true
+    if do_backtrack_if_success == nil then
+        do_backtrack_if_success = true
+    end
+    if do_backtrack_if_fail == nil then
+        do_backtrack_if_fail = true
     end
 
     local result = true
@@ -77,7 +80,7 @@ function try_excavate(moves, prior_moves, do_backtrack)
     end
 
     -- If either backtracking is enabled or the turtle could not complete the move list
-    if do_backtrack or not result then
+    if (result and do_backtrack_if_success) or (not result and do_backtrack_if_fail) then
         execute_reversed_moves(executed_moves)  -- Backtrack only this particular call's moves
     end
 
