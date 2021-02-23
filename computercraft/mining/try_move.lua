@@ -4,7 +4,7 @@ local turn_to = require("turtle.turn_to")
 local cc_constants = require("constants")
 
 
-function try_move(move, is_reverse_order)
+function try_move(move, is_reverse_order, keep_non_valuables)
     --[[
     A managed function for movement that will attempt to remove obstacles if necessary.
     Lazy inventory cleaning is implemented before each time an obstacle is removed.
@@ -16,6 +16,9 @@ function try_move(move, is_reverse_order)
     -- Default values
     if is_reverse_order == nil then
         is_reverse_order = false
+    end
+    if keep_non_valuables == nil then
+        keep_non_valuables = false
     end
 
     assert(
@@ -53,7 +56,7 @@ function try_move(move, is_reverse_order)
             if (not inspect_success) or (inspect_success and string.find(block["name"], "computercraft:") == 1) then
                 os.sleep(constants.move_attempt_wait_time)
             else
-                if not try_clean_inventory(constants.non_valuables, constants.empty_slots_required, true) then
+                if not try_clean_inventory(constants.non_valuables, constants.empty_slots_required, not keep_non_valuables) then
                     return false
                 end
                 dig_command()

@@ -11,7 +11,7 @@ local concat_tables = require("data.concat_tables")
 local fuel_required = require("mining.fuel_required")
 
 
-function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_if_fail)
+function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_if_fail, keep_non_valuables)
     --[[
     This function carries out a sequence of moves using try_move(), checking for ores around itself after each step.
     Any ores that are discovered will trigger recursion in order to mine the full ore node out before continuing.
@@ -28,6 +28,9 @@ function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_
     if do_backtrack_if_fail == nil then
         do_backtrack_if_fail = true
     end
+    if keep_non_valuables == nil then
+        keep_non_valuables = false
+    end
 
     local result = true
 
@@ -39,15 +42,15 @@ function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_
 
         -- Check that will be more than enough fuel to return to the starting position, after the next move
         if fuel_spent >= turtle.getFuelLevel()-1 then
-            execute_reversed_moves(full_moves)
+            execute_reversed_moves(full_moves, keep_non_valuables)
             assert(
                 try_refuel(fuel_spent),
                 "unable to refuel"
             )
-            execute_moves(full_moves)
+            execute_moves(full_moves, false, keep_non_valuables)
         end
 
-        if not try_move(move) then
+        if not try_move(move, false, keep_non_valuables) then
             result = false
             break
         end
@@ -70,7 +73,7 @@ function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_
                 local block = inspect_direction(direction)
 
                 if block and constants.valuables[block["name"]] then
-                    local excavate_result = try_excavate({direction}, full_moves)
+                    local excavate_result = try_excavate({direction}, full_moves, true, true, keep_non_valuables)
                     if not excavate_result then
                         result = false
                     end
@@ -81,7 +84,7 @@ function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_
 
     -- If either backtracking is enabled or the turtle could not complete the move list
     if (result and do_backtrack_if_success) or (not result and do_backtrack_if_fail) then
-        execute_reversed_moves(executed_moves)  -- Backtrack only this particular call's moves
+        execute_reversed_moves(executed_moves, keep_non_valuables)  -- Backtrack only this particular call's moves
     end
 
     return result

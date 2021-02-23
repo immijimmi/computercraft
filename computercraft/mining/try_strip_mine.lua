@@ -2,7 +2,12 @@ local try_excavate = require("mining.try_excavate")
 local constants = require("mining.constants")
 
 
-function try_strip_mine(curr_depth, resource, distance)
+function try_strip_mine(curr_depth, resource, distance, keep_non_valuables)
+    -- Default values
+    if keep_non_valuables == nil then
+        keep_non_valuables = false
+    end
+
     local moves = {}
     local offset_counts = {["forward"]=0, ["up"]=0}
 
@@ -81,7 +86,7 @@ function try_strip_mine(curr_depth, resource, distance)
         end
     end
 
-    if not try_excavate(moves, nil, false) then
+    if not try_excavate(moves, nil, false, true, keep_non_valuables) then
         return false
     end
 

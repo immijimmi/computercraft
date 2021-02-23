@@ -50,7 +50,7 @@ function lava_pool_refuel()
 
             try_lava_refuel_down()
         end
-        execute_reversed_moves(column_moves)
+        execute_reversed_moves(column_moves, true)  -- Lava refueling should not eject items unnecessarily, so keep_non_valuables is true here
 
         if can_lava_refuel() then
             local move_success = turtle.forward()
@@ -60,7 +60,7 @@ function lava_pool_refuel()
             row_moves[#row_moves+1] = "forward"
         end
     end
-    execute_reversed_moves(row_moves)
+    execute_reversed_moves(row_moves, true)
 
     turtle.select(current_slot_index)
 end
