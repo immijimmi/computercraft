@@ -2,7 +2,8 @@ local concat_lists = require("data.concat_lists")
 
 
 function filled_square_moves(size)
-    local is_odd = math.fmod(size, 2) == 1
+    local odd_remainder = math.fmod(size, 2)
+    local is_odd = odd_remainder == 1
     local moves = {}
 
     if is_odd then
@@ -24,7 +25,7 @@ function filled_square_moves(size)
         moves[#moves+1] = "forward"
     end
 
-    for i=1,((size-is_odd)/2)-1 do
+    for i=1,((size-odd_remainder)/2)-1 do
         moves = concat_lists(moves, {"right", "right"})
         for i=1,size-3 do
             moves[#moves+1] = "forward"
