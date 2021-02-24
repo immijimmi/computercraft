@@ -11,9 +11,9 @@ local concat_tables = require("data.concat_tables")
 local fuel_required = require("mining.fuel_required")
 
 
-function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_if_fail, keep_non_valuables)
+function try_excavate(moves, prior_moves, backtrack_if, keep_non_valuables, search_for_valuables)
     --[[
-    This function carries out a sequence of moves using try_move(), checking for ores around itself after each step.
+    This function carries out a sequence of moves using try_move(), optionally checking for ores around itself after each step.
     Any ores that are discovered will trigger recursion in order to mine the full ore node out before continuing.
     Fuel usage is also managed and refueling is attempted as necessary via try_refuel()
     --]]
@@ -22,15 +22,24 @@ function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_
     if prior_moves == nil then
         prior_moves = {}
     end
-    if do_backtrack_if_success == nil then
-        do_backtrack_if_success = true
-    end
-    if do_backtrack_if_fail == nil then
-        do_backtrack_if_fail = true
+    if backtrack_if == nil then
+        backtrack_if = false
     end
     if keep_non_valuables == nil then
         keep_non_valuables = false
     end
+    if search_for_valuables == nil then
+        search_for_valuables = true
+    end
+
+    local backtrack_cases = {[true]={true, true}, success={true, false}, fail={false, true}, [false]={}}
+    assert(
+        backtrack_cases[backtrack_if],
+        "backtrack_if must be true/false, or in {'success', 'fail'}"
+    )
+    local backtrack_case = backtrack_cases[backtrack_if]
+    local do_backtrack_if_success = backtrack_case[1]
+    local do_backtrack_if_fail = backtrack_case[2]
 
     local result = true
 
@@ -62,20 +71,22 @@ function try_excavate(moves, prior_moves, do_backtrack_if_success, do_backtrack_
             fuel_spent = fuel_spent+1
 
             -- Inspecting the new surroundings for valuable ores
-            local inspect_directions = concat_tables({}, cc_constants.valid_directions)
+            if search_for_valuables then
+                local inspect_directions = concat_tables({}, cc_constants.valid_directions)
 
-            local next_move = moves[move_index+1]
-            if next_move then
-                inspect_directions[next_move] = nil  -- If a move is already next, it does not need inspecting
-            end
+                local next_move = moves[move_index+1]
+                if next_move then
+                    inspect_directions[next_move] = nil  -- If a move is already next, it does not need inspecting
+                end
 
-            for direction, _ in pairs(inspect_directions) do
-                local block = inspect_direction(direction)
+                for direction, _ in pairs(inspect_directions) do
+                    local block = inspect_direction(direction)
 
-                if block and constants.valuables[block["name"]] then
-                    local excavate_result = try_excavate({direction}, full_moves, true, true, keep_non_valuables)
-                    if not excavate_result then
-                        result = false
+                    if block and constants.valuables[block["name"]] then
+                        local excavate_result = try_excavate({direction}, full_moves, true, keep_non_valuables, true)
+                        if not excavate_result then
+                            result = false
+                        end
                     end
                 end
             end

@@ -36,7 +36,7 @@ function deploy_turtles(amount, moves_between, delay_between, drive_position, gi
         end
 
         if not is_static then
-            if not try_excavate(moves_between, executed_moves, false) then
+            if not try_excavate(moves_between, executed_moves, "fail", false, false) then
                 execute_reversed_moves(executed_moves)
                 error("unable to clear the required space")
             end

@@ -33,7 +33,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
 
     if do_check_space then
         assert(
-            try_excavate({direction}, prior_moves),
+            try_excavate({direction}, prior_moves, true, false, false),
             "unable to clear the required space"
         )
     end
