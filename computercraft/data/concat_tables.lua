@@ -7,7 +7,7 @@ function concat_tables(...)
 
     local result = {}
 
-    for _, tab in ipairs(...) do
+    for _, tab in ipairs({...}) do
         for key, value in pairs(tab) do
             result[key] = value
         end
