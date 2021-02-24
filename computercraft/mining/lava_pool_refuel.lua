@@ -7,7 +7,8 @@ local execute_reversed_moves = require("mining.execute_reversed_moves")
 
 function lava_pool_refuel()
     --[[
-    Assumes the turtle is directly above lava and facing towards a lava pool.
+    Because this is itself a refueling method, it is not fuel-safe.
+    Assumptions are made that the turtle is directly above lava and facing towards a lava pool, and that it will not run out of fuel mid-refueling
     --]]
 
     local function try_lava_refuel_down()
