@@ -1,4 +1,4 @@
-local try_excavate = require("")
+local try_excavate = require("mining.try_excavate")
 local filled_square_moves = require("mining.filled_square_moves")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
 
