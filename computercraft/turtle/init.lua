@@ -1,0 +1,7 @@
+find_item = require("turtle.find_item")
+has_free_slots = require("turtle.has_free_slots")
+has_items = require("turtle.has_items")
+inspect_all = require("turtle.inspect_all")
+inspect_direction = require("turtle.inspect_direction")
+orient = require("turtle.orient")
+turn_to = require("turtle.turn_to")

@@ -1,0 +1,6 @@
+deploy_lava_pool_refuels = require("management.deploy_lava_pool_refuels")
+deploy_strip_miners = require("management.deploy_strip_miners")
+deploy_turtle = require("management.deploy_turtle")
+deploy_turtles = require("management.deploy_turtles")
+handle_deployment = require("management.handle_deployment")
+set_startup_replace = require("management.set_startup_replace")
