@@ -3,10 +3,24 @@ local deploy_turtles = require("management.deploy_turtles")
 
 
 function handle_deployment(
-    file_contents, set_startup_replace_direction,
+    custom_file_contents, set_startup_replace_direction,
     amount, moves_between, delay_between, deploy_drive_position, give_items)
 
-    set_startup_replace(file_contents, set_startup_replace_direction, true)
+    local function generate_complete_file_contents()
+        local standard_file_contents = [[
+-- Boilerplate deployment code
+shell.run("delete startup.lua")
+
+local orient = require("turtle.orient")
+orient()
+
+-- Custom code
+]]
+
+        return standard_file_contents..custom_file_contents
+    end
+
+    set_startup_replace(generate_complete_file_contents(), set_startup_replace_direction, true)
 
     local deploy_success, deploy_data = pcall(
         function()
