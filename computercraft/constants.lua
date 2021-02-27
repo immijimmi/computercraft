@@ -1,4 +1,6 @@
 local constants = {
+    moves_save_file = "moves.csv",
+
     valid_directions = {
         forward=true,
         back=true,
