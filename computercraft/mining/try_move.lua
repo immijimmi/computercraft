@@ -46,9 +46,11 @@ function try_move(move, is_reverse_order, keep_non_valuables)
             append_to_csv(move, cc_constants.moves_save_file)
         else
             local moves = csv_to_list(cc_constants.moves_save_file)
+            local last_saved_move = moves[#moves]
+            local reversed_last_saved_move = cc_constants.moves_lookup[last_saved_move]
 
             assert(
-                moves[#moves] == move,
+                reversed_last_saved_move == move,
                 "the move being reversed does not match the last saved move"
             )
 
