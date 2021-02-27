@@ -9,10 +9,10 @@ local list_to_csv = require("data.list_to_csv")
 
 function try_move(move, is_reverse_order, keep_non_valuables)
     --[[
-    A managed function for movement that will attempt to remove obstacles if necessary and persist moves to a save file.
+    A managed function for movement that will attempt to remove obstacles if necessary.
     Lazy inventory cleaning is implemented before each time an obstacle is removed.
 
-    Reverse order only affects whether the move is added to or removed from persistent storage, and whether turns are executed before movement.
+    Reverse order only affects whether turns are executed before movement.
     Any actual reversal of direction should be carried out externally with the resulting direction being used in this function
     --]]
 
@@ -38,25 +38,6 @@ function try_move(move, is_reverse_order, keep_non_valuables)
             return {constants.empty_function}
         else
             return {turtle.forward, turtle.dig, turtle.inspect}
-        end
-    end
-
-    local function save_move()
-        if not is_reverse_order then
-            append_to_csv(move, cc_constants.moves_save_file)
-        else
-            local moves = csv_to_list(cc_constants.moves_save_file)
-            local last_saved_move = moves[#moves]
-            local reversed_last_saved_move = cc_constants.moves_lookup[last_saved_move]
-
-            assert(
-                reversed_last_saved_move == move,
-                "the move being reversed does not match the last saved move"
-            )
-
-            moves[#moves] = nil
-
-            list_to_csv(moves, cc_constants.moves_save_file)
         end
     end
 
@@ -89,7 +70,6 @@ function try_move(move, is_reverse_order, keep_non_valuables)
     if not is_reverse_order then
         turn_to(move)
         if try_move_command() then
-            save_move()
             return true
         else
             turn_to(move, true)
@@ -99,8 +79,6 @@ function try_move(move, is_reverse_order, keep_non_valuables)
     else
         if try_move_command() then
             turn_to(move)
-
-            save_move()
             return true
         else
             return false
