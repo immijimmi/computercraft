@@ -12,7 +12,7 @@ local try_strip_mine = require("mining.try_strip_mine")
 
 try_strip_mine(%d, "%s", %d, %s)
 ]]
-    custom_file_contents = string.format(custom_file_contents, curr_depth, resource, distance, keep_non_valuables)
+    custom_file_contents = custom_file_contents:format(curr_depth, resource, distance, keep_non_valuables)
 
     local moves_between = {"right", "forward", "forward", "turnLeft"}
 
