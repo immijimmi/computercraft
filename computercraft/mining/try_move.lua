@@ -9,7 +9,7 @@ local list_to_csv = require("data.list_to_csv")
 
 function try_move(move, is_reverse_order, keep_non_valuables)
     --[[
-    A managed function for movement that will attempt to remove obstacles if necessary.
+    A managed function for movement that will attempt to remove obstacles if necessary and persist moves to a save file.
     Lazy inventory cleaning is implemented before each time an obstacle is removed.
 
     Reverse order only affects whether the move is added to or removed from persistent storage, and whether turns are executed before movement.
