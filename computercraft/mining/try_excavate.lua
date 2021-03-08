@@ -22,7 +22,7 @@ function try_excavate(moves, prior_moves, backtrack_if, keep_non_valuables, sear
         prior_moves = {}
     end
     if backtrack_if == nil then
-        backtrack_if = false
+        backtrack_if = true
     end
     if keep_non_valuables == nil then
         keep_non_valuables = false
