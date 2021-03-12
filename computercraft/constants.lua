@@ -19,6 +19,19 @@ local constants = {
         back = "back",
         turnLeft = "turnRight",
         turnRight = "turnLeft"
+    },
+
+    ids_lookup = {
+        ["1.12.2"] = {
+            turtle = "computercraft:turtle_expanded",
+            disk_drive = "computercraft:peripheral",
+            floppy_disk = "computercraft:disk_expanded"
+        },
+        ["1.16.4"] = {
+            turtle = "computercraft:turtle_normal",
+            disk_drive = "computercraft:disk_drive",
+            floppy_disk = "computercraft:disk"
+        }
     }
 }
 
