@@ -10,8 +10,8 @@ local constants = {
 
     -- Generic items a deployer requires, excluding any deployable turtles and the items they in turn require for whatever task
     deploy_items = {
-        [cc_constants.ids_lookup[config.version].disk_drive]=1,
-        [cc_constants.ids_lookup[config.version].floppy_disk]=1
+        [cc_constants.ids[config.version].disk_drive]=1,
+        [cc_constants.ids[config.version].floppy_disk]=1
     }
 }
 

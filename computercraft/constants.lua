@@ -21,7 +21,7 @@ local constants = {
         turnRight = "turnLeft"
     },
 
-    ids_lookup = {
+    ids = {
         ["1.12.2"] = {
             turtle = "computercraft:turtle_expanded",
             disk_drive = "computercraft:peripheral",
