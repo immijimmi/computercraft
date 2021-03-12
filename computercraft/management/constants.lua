@@ -1,4 +1,4 @@
-cc_constants = require("constants")
+local cc_constants = require("constants")
 
 local constants = {
     drive_positions = {  -- Lookup table for where to move deployer turtle before placing disk drive in front of itself
