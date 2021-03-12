@@ -37,6 +37,11 @@ local ids_version_lookup = {
         flowing_lava = "minecraft:flowing_lava",
         water = "minecraft:water",
         flowing_water = "minecraft:flowing_water",
+        coal = "minecraft:coal",
+        diamond = "minecraft:diamond",
+        redstone = "minecraft:redstone",
+        emerald = "minecraft:emerald",
+        lapis_lazuli = "minecraft:dye",
 
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",
@@ -78,6 +83,11 @@ local ids_version_lookup = {
         flowing_lava = "minecraft:lava",  -- TODO: Check this ID is correct for this version
         water = "minecraft:water",
         flowing_water = "minecraft:water",  -- TODO: Check this ID is correct for this version
+        coal = "minecraft:coal",  -- TODO: Check this ID is correct for this version
+        diamond = "minecraft:diamond",  -- TODO: Check this ID is correct for this version
+        redstone = "minecraft:redstone",  -- TODO: Check this ID is correct for this version
+        emerald = "minecraft:emerald",  -- TODO: Check this ID is correct for this version
+        lapis_lazuli = "minecraft:dye",  -- TODO: Check this ID is correct for this version
 
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",

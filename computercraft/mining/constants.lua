@@ -30,6 +30,11 @@ local constants = {
         [cc_constants.ids.lapis_ore]=true,
         [cc_constants.ids.obsidian]=true,
         [cc_constants.ids.crying_obsidian]=true,
+        [cc_constants.ids.coal]=true,
+        [cc_constants.ids.diamond]=true,
+        [cc_constants.ids.redstone]=true,
+        [cc_constants.ids.emerald]=true,
+        [cc_constants.ids.lapis_lazuli]=true,
 
         -- Nether
         [cc_constants.ids.ancient_debris]=true,
