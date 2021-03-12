@@ -2,6 +2,7 @@ local has_items = require("turtle.has_items")
 local find_item = require("turtle.find_item")
 local has_free_slots = require("turtle.has_free_slots")
 local constants = require("mining.constants")
+local cc_constants = require("constants")
 local execute_reversed_moves = require("mining.execute_reversed_moves")
 
 
@@ -12,10 +13,10 @@ function lava_pool_refuel()
     --]]
 
     local function try_lava_refuel_down()
-        turtle.select(find_item("minecraft:bucket"))
+        turtle.select(find_item(cc_constants.ids.bucket))
         turtle.placeDown()
 
-        local lava_bucket_index = find_item("minecraft:lava_bucket")
+        local lava_bucket_index = find_item(cc_constants.ids.lava_bucket)
         if not (lava_bucket_index == nil) then
             turtle.select(lava_bucket_index)
             turtle.refuel()
@@ -26,11 +27,11 @@ function lava_pool_refuel()
     end
 
     local function can_lava_refuel()
-        return turtle.getFuelLevel() + constants.fuel_amounts["minecraft:lava_bucket"] < turtle.getFuelLimit()
+        return turtle.getFuelLevel() + constants.fuel_amounts[cc_constants.ids.lava_bucket] < turtle.getFuelLimit()
     end
 
     assert(
-        has_items({["minecraft:bucket"]=1}) and has_free_slots(1),
+        has_items({[cc_constants.ids.bucket]=1}) and has_free_slots(1),
         "turtle needs an empty bucket to refuel using lava, "..
         "and one free slot to hold the lava bucket incase the empty bucket is in a stack of more than 1"
     )

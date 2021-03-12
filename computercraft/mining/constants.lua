@@ -1,47 +1,45 @@
+local cc_constants = require("constants")
+
 local constants = {
     non_valuables = {  -- Used to filter items out of the inventory
         -- Overworld
-        ["minecraft:sand"]=true,
-        ["minecraft:gravel"]=true,
-        ["minecraft:granite"]=true,
-        ["minecraft:diorite"]=true,
-        ["minecraft:andesite"]=true,
-        ["minecraft:dirt"]=true,
-        ["minecraft:cobblestone"]=true,
-        ["minecraft:oak_planks"]=true,
+        [cc_constants.ids.sand]=true,
+        [cc_constants.ids.gravel]=true,
+        [cc_constants.ids.granite]=true,
+        [cc_constants.ids.diorite]=true,
+        [cc_constants.ids.andesite]=true,
+        [cc_constants.ids.dirt]=true,
+        [cc_constants.ids.cobblestone]=true,
+        [cc_constants.ids.oak_planks]=true,
 
         -- Nether
-        ["minecraft:netherrack"]=true,
-        ["minecraft:magma_block"]=true,
-        ["minecraft:blackstone"]=true,
-        ["minecraft:soul_sand"]=true
+        [cc_constants.ids.netherrack]=true,
+        [cc_constants.ids.magma_block]=true,
+        [cc_constants.ids.blackstone]=true,
+        [cc_constants.ids.soul_sand]=true
     },
 
     valuables = {  -- Used to pick blocks to mine
         -- Overworld
-        ["minecraft:diamond_ore"]=true,
-        ["minecraft:redstone_ore"]=true,
-        ["minecraft:iron_ore"]=true,
-        ["minecraft:gold_ore"]=true,
-        ["minecraft:coal_ore"]=true,
-        ["minecraft:emerald_ore"]=true,
-        ["minecraft:lapis_ore"]=true,
-        ["minecraft:obsidian"]=true,
-        ["minecraft:crying_obsidian"]=true,
+        [cc_constants.ids.diamond_ore]=true,
+        [cc_constants.ids.redstone_ore]=true,
+        [cc_constants.ids.iron_ore]=true,
+        [cc_constants.ids.gold_ore]=true,
+        [cc_constants.ids.coal_ore]=true,
+        [cc_constants.ids.emerald_ore]=true,
+        [cc_constants.ids.lapis_ore]=true,
+        [cc_constants.ids.obsidian]=true,
+        [cc_constants.ids.crying_obsidian]=true,
 
         -- Nether
-        ["minecraft:ancient_debris"]=true,
-        ["minecraft:nether_gold_ore"]=true,
-        ["minecraft:glowstone"]=true,
-        ["minecraft:nether_quartz_ore"]=true,
+        [cc_constants.ids.ancient_debris]=true,
+        [cc_constants.ids.nether_gold_ore]=true,
+        [cc_constants.ids.glowstone]=true,
+        [cc_constants.ids.nether_quartz_ore]=true,
 
-        -- Ars Nouveau
-        ["ars_nouveau:arcane_ore"]=true,
-
-        -- Applied Energistics 2 (WIP)
-        ["appliedenergistics2:sky_stone_block"]=true,
-        ["appliedenergistics2:quartz_ore"]=true,
-        ["appliedenergistics2:charged_quartz_ore"]=true
+        -- Applied Energistics 2
+        [cc_constants.ids.certus_quartz_ore]=true,
+        [cc_constants.ids.charged_certus_quartz_ore]=true
     },
 
     empty_slots_required = 2,
@@ -60,7 +58,7 @@ local constants = {
 
     empty_function = function() return true end,
 
-    fuel_amounts = {["minecraft:lava_bucket"]=1000}
+    fuel_amounts = {[cc_constants.ids.lava_bucket]=1000}
 }
 
 return constants

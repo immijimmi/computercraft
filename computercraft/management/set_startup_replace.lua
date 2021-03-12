@@ -46,7 +46,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
     local drop_command = commands[3]
     local suck_command = commands[4]
 
-    turtle.select(find_item("computercraft:disk_drive"))
+    turtle.select(find_item(cc_constants.ids.disk_drive))
     turn_to(direction)
 
     if not place_command() then
@@ -55,7 +55,7 @@ function set_startup_replace(file_contents, direction, do_check_space, prior_mov
         error("unable to place the disk drive")
     end
 
-    turtle.select(find_item("computercraft:disk"))
+    turtle.select(find_item(cc_constants.ids.floppy_disk))
     drop_command()
 
     if file_contents == nil then

@@ -8,6 +8,7 @@ local find_item = require("turtle.find_item")
 local merged_item_counts = require("data.merged_item_counts")
 local constants = require("management.constants")
 local concat_lists = require("data.concat_lists")
+local cc_constants = require("constants")
 
 
 function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
@@ -31,7 +32,7 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
     end
 
     assert(
-        has_items(merged_item_counts(constants.deploy_items, {["computercraft:turtle_normal"]=1}, give_items)),
+        has_items(merged_item_counts(constants.deploy_items, {[cc_constants.ids.turtle]=1}, give_items)),
         "required items are not in inventory"
     )
 
@@ -66,15 +67,15 @@ function deploy_turtle(prior_moves, do_check_space, drive_position, give_items)
 
     local current_slot_index = turtle.getSelectedSlot()
 
-    turtle.select(find_item("computercraft:turtle_normal"))
+    turtle.select(find_item(cc_constants.ids.turtle))
     turtle.place()
     peripheral.call("front", "turnOn")
 
     execute_moves(drive_moves)
 
-    turtle.select(find_item("computercraft:disk_drive"))
+    turtle.select(find_item(cc_constants.ids.disk_drive))
     turtle.place()
-    turtle.select(find_item("computercraft:disk"))
+    turtle.select(find_item(cc_constants.ids.floppy_disk))
     turtle.drop()
 
     execute_reversed_moves(drive_moves)
