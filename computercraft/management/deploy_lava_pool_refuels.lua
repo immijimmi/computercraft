@@ -1,4 +1,5 @@
 local handle_deployment = require("management.handle_deployment")
+local cc_constants = require("constants")
 
 
 function deploy_lava_pool_refuels(amount)
@@ -9,7 +10,7 @@ lava_pool_refuel()
 ]]
 
     local moves_between = {"right", "turnLeft"}
-    local give_items = {["minecraft:bucket"]=1}
+    local give_items = {[cc_constants.ids.bucket]=1}
 
     handle_deployment(
         custom_file_contents, "up",
