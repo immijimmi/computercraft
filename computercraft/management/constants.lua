@@ -1,4 +1,3 @@
-config = require("config")
 cc_constants = require("constants")
 
 local constants = {
@@ -10,8 +9,8 @@ local constants = {
 
     -- Generic items a deployer requires, excluding any deployable turtles and the items they in turn require for whatever task
     deploy_items = {
-        [cc_constants.ids[config.version].disk_drive]=1,
-        [cc_constants.ids[config.version].floppy_disk]=1
+        [cc_constants.ids.disk_drive]=1,
+        [cc_constants.ids.floppy_disk]=1
     }
 }
 

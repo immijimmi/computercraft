@@ -1,3 +1,18 @@
+local config = require("config")
+
+local ids_version_lookup = {
+    ["1.12.2"] = {
+        turtle = "computercraft:turtle_expanded",
+        disk_drive = "computercraft:peripheral",
+        floppy_disk = "computercraft:disk_expanded"
+    },
+    ["1.16.4"] = {
+        turtle = "computercraft:turtle_normal",
+        disk_drive = "computercraft:disk_drive",
+        floppy_disk = "computercraft:disk"
+    }
+}
+
 local constants = {
     moves_save_file = "moves.csv",
 
@@ -21,18 +36,7 @@ local constants = {
         turnRight = "turnLeft"
     },
 
-    ids = {
-        ["1.12.2"] = {
-            turtle = "computercraft:turtle_expanded",
-            disk_drive = "computercraft:peripheral",
-            floppy_disk = "computercraft:disk_expanded"
-        },
-        ["1.16.4"] = {
-            turtle = "computercraft:turtle_normal",
-            disk_drive = "computercraft:disk_drive",
-            floppy_disk = "computercraft:disk"
-        }
-    }
+    ids = ids_version_lookup[config.version]
 }
 
 return constants
