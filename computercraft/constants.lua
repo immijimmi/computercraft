@@ -90,28 +90,28 @@ local ids_version_lookup = {
         bucket = "minecraft:bucket",
         lava_bucket = "minecraft:lava_bucket",
         lava = "minecraft:lava",
-        flowing_lava = "minecraft:lava",  -- TODO: Check this ID is correct for this version
+        flowing_lava = false,  -- TODO: Unchecked
         water = "minecraft:water",
-        flowing_water = "minecraft:water",  -- TODO: Check this ID is correct for this version
-        coal = "minecraft:coal",  -- TODO: Check this ID is correct for this version
-        diamond = "minecraft:diamond",  -- TODO: Check this ID is correct for this version
-        redstone = "minecraft:redstone",  -- TODO: Check this ID is correct for this version
-        emerald = "minecraft:emerald",  -- TODO: Check this ID is correct for this version
-        lapis_lazuli = "minecraft:dye",  -- TODO: Check this ID is correct for this version
-        clay = false,  -- Unchecked
-        slimeball = false,  -- Unchecked
+        flowing_water = false,  -- TODO: Unchecked
+        coal = false,  -- TODO: Unchecked
+        diamond = false,  -- TODO: Unchecked
+        redstone = false,  -- TODO: Unchecked
+        emerald = false,  -- TODO: Unchecked
+        lapis_lazuli = false,  -- TODO: Unchecked
+        clay = false,  -- TODO: Unchecked
+        slimeball = false,  -- TODO: Unchecked
 
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",
         charged_certus_quartz_ore = "appliedenergistics2:charged_quartz_ore",
 
         -- Aroma1997's Dimensional World
-        sticky_ore = false,  -- Unchecked
-        clay_ore = false,  -- Unchecked
+        sticky_ore = false,  -- TODO: Unchecked
+        clay_ore = false,  -- TODO: Unchecked
 
         -- Better Nether
-        cincinnasite_ore = false,  -- Unchecked
-        cincinnasite = false  -- Unchecked
+        cincinnasite_ore = false,  -- TODO: Unchecked
+        cincinnasite = false  -- TODO: Unchecked
     }
 }
 
