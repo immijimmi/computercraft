@@ -35,6 +35,8 @@ local constants = {
         [cc_constants.ids.redstone]=true,
         [cc_constants.ids.emerald]=true,
         [cc_constants.ids.lapis_lazuli]=true,
+        [cc_constants.ids.clay]=true,
+        [cc_constants.ids.slimeball]=true,
 
         -- Nether
         [cc_constants.ids.ancient_debris]=true,
@@ -44,7 +46,15 @@ local constants = {
 
         -- Applied Energistics 2
         [cc_constants.ids.certus_quartz_ore]=true,
-        [cc_constants.ids.charged_certus_quartz_ore]=true
+        [cc_constants.ids.charged_certus_quartz_ore]=true,
+
+        -- Aroma1997's Dimensional World
+        [cc_constants.ids.sticky_ore]=true,
+        [cc_constants.ids.clay_ore]=true,
+
+        -- Better Nether
+        [cc_constants.ids.cincinnasite_ore]=true,
+        [cc_constants.ids.cincinnasite]=true
     },
 
     empty_slots_required = 2,
