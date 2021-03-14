@@ -46,10 +46,13 @@ local ids_version_lookup = {
         clay = "minecraft:clay_ball",
         slimeball = "minecraft:slime_ball",
         flint = "minecraft:flint",
+        nether_quartz = "minecraft:quartz",
 
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",
         charged_certus_quartz_ore = "appliedenergistics2:charged_quartz_ore",
+        certus_quartz = "appliedenergistics2:material",
+        charged_certus_quartz = "appliedenergistics2:material",
 
         -- Aroma1997's Dimensional World
         sticky_ore = "aroma1997sdimension:miningore",
@@ -122,10 +125,7 @@ local ids_version_lookup = {
         clay = false,  -- TODO: Unchecked
         slimeball = false,  -- TODO: Unchecked
         flint = false,  -- TODO: Unchecked
-
-        -- Applied Energistics 2
-        certus_quartz_ore = "appliedenergistics2:quartz_ore",
-        charged_certus_quartz_ore = "appliedenergistics2:charged_quartz_ore",
+        nether_quartz = false,  -- TODO: Unchecked
     }
 }
 
