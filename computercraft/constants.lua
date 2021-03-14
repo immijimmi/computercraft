@@ -44,6 +44,7 @@ local ids_version_lookup = {
         lapis_lazuli = "minecraft:dye",
         clay = "minecraft:clay_ball",
         slimeball = "minecraft:slime_ball",
+        flint = "minecraft:flint",
 
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",
@@ -55,7 +56,13 @@ local ids_version_lookup = {
 
         -- Better Nether
         cincinnasite_ore = "betternether:cincinnasite_ore",
-        cincinnasite = "betternether:cincinnasite"
+        cincinnasite = "betternether:cincinnasite",
+
+        -- IndustrialCraft
+        ic2_copper_ore = "ic2:resource",
+        ic2_tin_ore = "ic2:resource",
+        ic2_lead_ore = "ic2:resource",
+        ic2_uranium_ore = "ic2:resource"
     },
     ["1.16.4"] = {
         -- Minecraft
@@ -100,6 +107,7 @@ local ids_version_lookup = {
         lapis_lazuli = false,  -- TODO: Unchecked
         clay = false,  -- TODO: Unchecked
         slimeball = false,  -- TODO: Unchecked
+        flint = false,  -- TODO: Unchecked
 
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",
@@ -111,7 +119,13 @@ local ids_version_lookup = {
 
         -- Better Nether
         cincinnasite_ore = false,  -- TODO: Unchecked
-        cincinnasite = false  -- TODO: Unchecked
+        cincinnasite = false,  -- TODO: Unchecked
+
+        -- IndustrialCraft
+        ic2_copper_ore = false,  -- TODO: Unchecked
+        ic2_tin_ore = false,  -- TODO: Unchecked
+        ic2_lead_ore = false,  -- TODO: Unchecked
+        ic2_uranium_ore = false  -- TODO: Unchecked
     }
 }
 

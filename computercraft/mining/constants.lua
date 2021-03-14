@@ -37,6 +37,7 @@ local constants = {
         [cc_constants.ids.lapis_lazuli]=true,
         [cc_constants.ids.clay]=true,
         [cc_constants.ids.slimeball]=true,
+        [cc_constants.ids.flint]=true,
 
         -- Nether
         [cc_constants.ids.ancient_debris]=true,
@@ -54,7 +55,13 @@ local constants = {
 
         -- Better Nether
         [cc_constants.ids.cincinnasite_ore]=true,
-        [cc_constants.ids.cincinnasite]=true
+        [cc_constants.ids.cincinnasite]=true,
+
+        -- IndustrialCraft 2
+        [cc_constants.ids.ic2_copper_ore]=true,
+        [cc_constants.ids.ic2_tin_ore]=true,
+        [cc_constants.ids.ic2_lead_ore]=true,
+        [cc_constants.ids.ic2_uranium_ore]=true
     },
 
     empty_slots_required = 2,
