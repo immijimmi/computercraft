@@ -30,14 +30,6 @@ local constants = {
         [cc_constants.ids.lapis_lazuli_ore]=true,
         [cc_constants.ids.obsidian]=true,
         [cc_constants.ids.crying_obsidian]=true,
-        [cc_constants.ids.coal]=true,
-        [cc_constants.ids.diamond]=true,
-        [cc_constants.ids.redstone]=true,
-        [cc_constants.ids.emerald]=true,
-        [cc_constants.ids.lapis_lazuli]=true,
-        [cc_constants.ids.clay]=true,
-        [cc_constants.ids.slimeball]=true,
-        [cc_constants.ids.flint]=true,
 
         -- Nether
         [cc_constants.ids.ancient_debris]=true,
@@ -55,7 +47,6 @@ local constants = {
 
         -- Better Nether
         [cc_constants.ids.cincinnasite_ore]=true,
-        [cc_constants.ids.cincinnasite]=true,
 
         -- IndustrialCraft 2
         [cc_constants.ids.ic2_copper_ore]=true,
@@ -72,9 +63,6 @@ local constants = {
         [cc_constants.ids.gc_moon_tin_ore]=true,
         [cc_constants.ids.cheese_ore]=true,
         [cc_constants.ids.gc_sapphire_ore]=true,
-        [cc_constants.ids.gc_silicon]=true,
-        [cc_constants.ids.gc_cheese_curd]=true,
-        [cc_constants.ids.lunar_sapphire]=true,
     },
 
     empty_slots_required = 2,
