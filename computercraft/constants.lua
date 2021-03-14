@@ -1,4 +1,5 @@
 local config = require("config")
+local normalise_keys = require("data.normalise_keys")
 
 local ids_version_lookup = {
     ["1.12.2"] = {
@@ -125,35 +126,18 @@ local ids_version_lookup = {
         -- Applied Energistics 2
         certus_quartz_ore = "appliedenergistics2:quartz_ore",
         charged_certus_quartz_ore = "appliedenergistics2:charged_quartz_ore",
-
-        -- Aroma1997's Dimensional World
-        sticky_ore = false,  -- TODO: Unchecked
-        clay_ore = false,  -- TODO: Unchecked
-
-        -- Better Nether
-        cincinnasite_ore = false,  -- TODO: Unchecked
-        cincinnasite = false,  -- TODO: Unchecked
-
-        -- IndustrialCraft
-        ic2_copper_ore = false,  -- TODO: Unchecked
-        ic2_tin_ore = false,  -- TODO: Unchecked
-        ic2_lead_ore = false,  -- TODO: Unchecked
-        ic2_uranium_ore = false,  -- TODO: Unchecked
-
-        -- Galacticraft Core
-        gc_copper_ore = false,  -- TODO: Unchecked
-        gc_tin_ore = false,  -- TODO: Unchecked
-        gc_aluminum_ore = false,  -- TODO: Unchecked
-        gc_silicon_ore = false,  -- TODO: Unchecked
-        gc_moon_copper_ore = false,  -- TODO: Unchecked
-        gc_moon_tin_ore = false,  -- TODO: Unchecked
-        cheese_ore = false,  -- TODO: Unchecked
-        gc_sapphire_ore = false,  -- TODO: Unchecked
-        gc_silicon = false,  -- TODO: Unchecked
-        gc_cheese_curd = false,  -- TODO: Unchecked
-        lunar_sapphire = false,  -- TODO: Unchecked
     }
 }
+
+-- Normalising keys for all MC versions in ids_version_lookup (to prevent nil indexing when these IDs are used elsewhere)
+local first_lookup_table
+for _, lookup_table in pairs(ids_version_lookup) do
+    if first_lookup_table == nil then
+        first_lookup_table = lookup_table
+    else
+        normalise_keys(first_lookup_table, lookup_table)
+    end
+end
 
 local constants = {
     moves_save_file = "moves.csv",
