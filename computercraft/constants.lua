@@ -24,7 +24,7 @@ local ids_version_lookup = {
         gold_ore = "minecraft:gold_ore",
         coal_ore = "minecraft:coal_ore",
         emerald_ore = "minecraft:emerald_ore",
-        lapis_ore = "minecraft:lapis_ore",
+        lapis_lazuli_ore = "minecraft:lapis_ore",
         obsidian = "minecraft:obsidian",
         crying_obsidian = false,  -- Not in 1.12.2
         ancient_debris = false,  -- Not in 1.12.2
@@ -62,7 +62,20 @@ local ids_version_lookup = {
         ic2_copper_ore = "ic2:resource",
         ic2_tin_ore = "ic2:resource",
         ic2_lead_ore = "ic2:resource",
-        ic2_uranium_ore = "ic2:resource"
+        ic2_uranium_ore = "ic2:resource",
+
+        -- Galacticraft Core
+        gc_copper_ore = "galacticraftcore:basic_block_core",
+        gc_tin_ore = "galacticraftcore:basic_block_core",
+        gc_aluminum_ore = "galacticraftcore:basic_block_core",
+        gc_silicon_ore = "galacticraftcore:basic_block_core",
+        gc_moon_copper_ore = "galacticraftcore:basic_block_moon",
+        gc_moon_tin_ore = "galacticraftcore:basic_block_moon",
+        cheese_ore = "galacticraftcore:basic_block_moon",
+        gc_sapphire_ore = "galacticraftcore:basic_block_moon",
+        gc_silicon = "galacticraftcore:basic_item",
+        gc_cheese_curd = "galacticraftcore:cheese_curd",
+        lunar_sapphire = "galacticraftcore:item_basic_moon",
     },
     ["1.16.4"] = {
         -- Minecraft
@@ -87,7 +100,7 @@ local ids_version_lookup = {
         gold_ore = "minecraft:gold_ore",
         coal_ore = "minecraft:coal_ore",
         emerald_ore = "minecraft:emerald_ore",
-        lapis_ore = "minecraft:lapis_ore",
+        lapis_lazuli_ore = "minecraft:lapis_ore",
         obsidian = "minecraft:obsidian",
         crying_obsidian = "minecraft:crying_obsidian",
         ancient_debris = "minecraft:ancient_debris",
@@ -125,7 +138,20 @@ local ids_version_lookup = {
         ic2_copper_ore = false,  -- TODO: Unchecked
         ic2_tin_ore = false,  -- TODO: Unchecked
         ic2_lead_ore = false,  -- TODO: Unchecked
-        ic2_uranium_ore = false  -- TODO: Unchecked
+        ic2_uranium_ore = false,  -- TODO: Unchecked
+
+        -- Galacticraft Core
+        gc_copper_ore = false,  -- TODO: Unchecked
+        gc_tin_ore = false,  -- TODO: Unchecked
+        gc_aluminum_ore = false,  -- TODO: Unchecked
+        gc_silicon_ore = false,  -- TODO: Unchecked
+        gc_moon_copper_ore = false,  -- TODO: Unchecked
+        gc_moon_tin_ore = false,  -- TODO: Unchecked
+        cheese_ore = false,  -- TODO: Unchecked
+        gc_sapphire_ore = false,  -- TODO: Unchecked
+        gc_silicon = false,  -- TODO: Unchecked
+        gc_cheese_curd = false,  -- TODO: Unchecked
+        lunar_sapphire = false,  -- TODO: Unchecked
     }
 }
 
@@ -138,7 +164,7 @@ local constants = {
         up=true,
         down=true,
         left=true,
-        right=true
+        right=true,
     },
 
     moves_lookup = {  -- Doubles as both a set and a lookup for reversed moves
@@ -149,7 +175,7 @@ local constants = {
         forward = "forward",
         back = "back",
         turnLeft = "turnRight",
-        turnRight = "turnLeft"
+        turnRight = "turnLeft",
     },
 
     ids = ids_version_lookup[config.version]

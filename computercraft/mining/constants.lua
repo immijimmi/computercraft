@@ -16,7 +16,7 @@ local constants = {
         [cc_constants.ids.netherrack]=true,
         [cc_constants.ids.magma_block]=true,
         [cc_constants.ids.blackstone]=true,
-        [cc_constants.ids.soul_sand]=true
+        [cc_constants.ids.soul_sand]=true,
     },
 
     valuables = {  -- Used to pick blocks to mine
@@ -27,7 +27,7 @@ local constants = {
         [cc_constants.ids.gold_ore]=true,
         [cc_constants.ids.coal_ore]=true,
         [cc_constants.ids.emerald_ore]=true,
-        [cc_constants.ids.lapis_ore]=true,
+        [cc_constants.ids.lapis_lazuli_ore]=true,
         [cc_constants.ids.obsidian]=true,
         [cc_constants.ids.crying_obsidian]=true,
         [cc_constants.ids.coal]=true,
@@ -61,7 +61,20 @@ local constants = {
         [cc_constants.ids.ic2_copper_ore]=true,
         [cc_constants.ids.ic2_tin_ore]=true,
         [cc_constants.ids.ic2_lead_ore]=true,
-        [cc_constants.ids.ic2_uranium_ore]=true
+        [cc_constants.ids.ic2_uranium_ore]=true,
+
+        -- Galacticraft Core
+        [cc_constants.ids.gc_copper_ore]=true,
+        [cc_constants.ids.gc_tin_ore]=true,
+        [cc_constants.ids.gc_aluminum_ore]=true,
+        [cc_constants.ids.gc_silicon_ore]=true,
+        [cc_constants.ids.gc_moon_copper_ore]=true,
+        [cc_constants.ids.gc_moon_tin_ore]=true,
+        [cc_constants.ids.cheese_ore]=true,
+        [cc_constants.ids.gc_sapphire_ore]=true,
+        [cc_constants.ids.gc_silicon]=true,
+        [cc_constants.ids.gc_cheese_curd]=true,
+        [cc_constants.ids.lunar_sapphire]=true,
     },
 
     empty_slots_required = 2,
@@ -70,7 +83,7 @@ local constants = {
 
     non_fuel_moves = {
         turnLeft=true,
-        turnRight=true
+        turnRight=true,
     },
 
     resource_depths = {  -- Values should be the approximate centre of the most common y values for the resource
