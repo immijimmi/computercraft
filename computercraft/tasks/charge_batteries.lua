@@ -7,7 +7,6 @@ Expected use case is with the IC2 and Ender Storage mods, using an ender chest w
 for full batteries below. Paired with a reverse of this routine to unload power where necessary, this makes it possible to teleport power between locations
 and dimensions.
 --]]
-
 function charge_batteries()
     local idle_time = 5
 
@@ -41,3 +40,6 @@ function charge_batteries()
         end
     end
 end
+
+
+return charge_batteries
