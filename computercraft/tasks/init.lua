@@ -1,1 +1,1 @@
-charge_batteries = require("tasks.charge_batteries")
+process_batteries = require("tasks.process_batteries")
