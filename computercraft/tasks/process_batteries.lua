@@ -1,4 +1,5 @@
 local is_redstone_on = require("turtle.is_redstone_on")
+local constants = require("tasks.constants")
 
 
 function process_batteries(is_charging)
@@ -49,8 +50,6 @@ function process_batteries(is_charging)
     local suck_processed_chest = turtle.suck
     local drop_processed_chest = turtle.drop
 
-    local idle_time = 5
-
     turtle.select(1)
     while true do
         local held_item = turtle.getItemDetail()
@@ -61,13 +60,13 @@ function process_batteries(is_charging)
 
             if held_item == nil then
                 if is_redstone_on({"back", "left", "right"}) then
-                    os.sleep(idle_time)
+                    os.sleep(constants.idle_time.short)
                 else
                     suck_unprocessed_chest(1)
                     held_item = turtle.getItemDetail()
 
                     if held_item == nil then
-                        os.sleep(idle_time)
+                        os.sleep(constants.idle_time.short)
                     end
                 end
             end
@@ -76,12 +75,12 @@ function process_batteries(is_charging)
             local drop_success = drop_processed_chest()
 
             if drop_success == false then
-                os.sleep(idle_time)
+                os.sleep(constants.idle_time.short)
             end
 
         else
             drop_energy_storage_block()
-            os.sleep(idle_time)
+            os.sleep(constants.idle_time.long)
         end
     end
 end
