@@ -1,14 +1,22 @@
 local constants = require("tasks.constants")
 
 
-function regulate_extreme_reactor(control_rod_level, energy_buffer_threshold, peripheral_side)
+function regulate_extreme_reactor(control_rod_level, peripheral_side)
+    --[[
+    Stateless routine for managing an extreme reactor.
+
+    Note: Extreme reactors continue working even when the chunk is not loaded, whereas computers do not.
+    This leaves them unregulated when the chunk is not loaded.
+    A solution to this would be to keep the chunk loaded using a loader that works even when the player is offline.
+    --]]
+
     -- Defaults
     if peripheral_side == nil then
         peripheral_side = "back"
     end
-    if energy_buffer_threshold == nil then
-        energy_buffer_threshold = 0.8
-    end
+
+    local energy_buffer_min = 0.4
+    local energy_buffer_max = 0.8
 
     local reactor = peripheral.wrap(peripheral_side)
 
@@ -22,12 +30,12 @@ function regulate_extreme_reactor(control_rod_level, energy_buffer_threshold, pe
         local energy_stored = reactor.getEnergyStored()
         local buffer_fill_percentage = energy_stored/energy_capacity
 
-        if buffer_fill_percentage >= energy_buffer_threshold then
+        if buffer_fill_percentage >= energy_buffer_max then
             if is_reactor_active then
                 reactor.setActive(false)
                 is_reactor_active = false
             end
-        else
+        elseif buffer_fill_percentage < energy_buffer_min then
             if not is_reactor_active then
                 reactor.setActive(true)
                 is_reactor_active = true
