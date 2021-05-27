@@ -15,7 +15,7 @@ function regulate_extreme_reactor(control_rod_level, peripheral_side)
         peripheral_side = "back"
     end
 
-    local energy_buffer_min = 0.4
+    local energy_buffer_min = 0.2
     local energy_buffer_max = 0.8
 
     local reactor = peripheral.wrap(peripheral_side)
