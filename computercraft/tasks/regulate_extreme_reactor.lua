@@ -1,4 +1,5 @@
 local constants = require("tasks.constants")
+local is_redstone_on = require("turtle.is_redstone_on")
 
 
 function regulate_extreme_reactor(control_rod_level, peripheral_side)
@@ -29,16 +30,25 @@ function regulate_extreme_reactor(control_rod_level, peripheral_side)
     while true do
         local energy_stored = reactor.getEnergyStored()
         local buffer_fill_percentage = energy_stored/energy_capacity
+        local is_switched_off = is_redstone_on()
 
-        if buffer_fill_percentage >= energy_buffer_max then
+        if is_switched_off then
             if is_reactor_active then
                 reactor.setActive(false)
                 is_reactor_active = false
             end
-        elseif buffer_fill_percentage < energy_buffer_min then
-            if not is_reactor_active then
-                reactor.setActive(true)
-                is_reactor_active = true
+
+        else
+            if buffer_fill_percentage >= energy_buffer_max then
+                if is_reactor_active then
+                    reactor.setActive(false)
+                    is_reactor_active = false
+                end
+            elseif buffer_fill_percentage < energy_buffer_min then
+                if not is_reactor_active then
+                    reactor.setActive(true)
+                    is_reactor_active = true
+                end
             end
         end
 
