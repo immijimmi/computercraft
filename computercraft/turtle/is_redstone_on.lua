@@ -3,6 +3,9 @@ function is_redstone_on(sides, min_value)
     if min_value == nil then
         min_value = 1  -- Any redstone power value at all will count by default
     end
+    if sides == nil then
+        sides = {"front", "back", "left", "right", "up", "down"}
+    end
 
     for _, side in pairs(sides) do
         if rs.getAnalogInput(side) >= min_value then
