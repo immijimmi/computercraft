@@ -59,7 +59,7 @@ function process_batteries(is_charging)
             held_item = turtle.getItemDetail()
 
             if held_item == nil then
-                if is_redstone_on({"back", "left", "right"}) then
+                if is_redstone_on() then
                     os.sleep(constants.idle_time.short)
                 else
                     suck_unprocessed_chest(1)
