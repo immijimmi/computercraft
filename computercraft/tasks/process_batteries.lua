@@ -2,7 +2,7 @@ local is_redstone_on = require("turtle.is_redstone_on")
 local constants = require("tasks.constants")
 
 
-function process_batteries(is_charging)
+function process_batteries(is_charging, redstone_sides)
     --[[
     A highly specialised stateless routine for transferring power between an energy storage block and batteries.
 
@@ -59,7 +59,7 @@ function process_batteries(is_charging)
             held_item = turtle.getItemDetail()
 
             if held_item == nil then
-                if is_redstone_on() then
+                if is_redstone_on(redstone_sides) then
                     os.sleep(constants.idle_time.short)
                 else
                     suck_unprocessed_chest(1)
