@@ -52,16 +52,19 @@ function process_batteries(is_charging, redstone_sides)
 
     turtle.select(1)
     while true do
-        local held_item = turtle.getItemDetail()
+        local is_switched_off = is_redstone_on(redstone_sides)
 
-        if held_item == nil then
-            suck_energy_storage_block(1)
-            held_item = turtle.getItemDetail()
+        if is_switched_off then
+            os.sleep(constants.idle_time.short)
+
+        else
+            local held_item = turtle.getItemDetail()
 
             if held_item == nil then
-                if is_redstone_on(redstone_sides) then
-                    os.sleep(constants.idle_time.short)
-                else
+                suck_energy_storage_block(1)
+                held_item = turtle.getItemDetail()
+    
+                if held_item == nil then
                     suck_unprocessed_chest(1)
                     held_item = turtle.getItemDetail()
 
@@ -69,18 +72,18 @@ function process_batteries(is_charging, redstone_sides)
                         os.sleep(constants.idle_time.short)
                     end
                 end
+    
+            elseif held_item.damage == processed_battery_damage then
+                local drop_success = drop_processed_chest()
+    
+                if drop_success == false then
+                    os.sleep(constants.idle_time.short)
+                end
+    
+            else
+                drop_energy_storage_block()
+                os.sleep(constants.idle_time.long)
             end
-
-        elseif held_item.damage == processed_battery_damage then
-            local drop_success = drop_processed_chest()
-
-            if drop_success == false then
-                os.sleep(constants.idle_time.short)
-            end
-
-        else
-            drop_energy_storage_block()
-            os.sleep(constants.idle_time.long)
         end
     end
 end
